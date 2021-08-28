@@ -5,7 +5,7 @@
 }*/
 export const TITLE = {
     title: 'Pierre Randall',
-    color: '',
+    color: 'green',
 };
 export const LOGO = 'colored';
 export const PROFILE_PIC =
@@ -13,8 +13,7 @@ export const PROFILE_PIC =
 export const BACKGROUND = {
     image: false,
     imageLink: '',
-    color:
-        'background-image: linear-gradient(to right top, #00ff80, #00ffbb, #d5fbff, #d5fbff, #ffffff, #ffffff, #ffffff, #ffffff, #d5fbff, #d5fbff, #00ffbb, #00ff80)',
+    color: 'background-image: linear-gradient(to right top, #00ff80, #00ffbb, #d5fbff, #d5fbff, #ffffff, #ffffff, #ffffff, #ffffff, #d5fbff, #d5fbff, #00ffbb, #00ff80)',
 };
 export const SOCIAL_LINKS = {
     group: [
@@ -122,8 +121,7 @@ export const LINK_GROUP_1 = {
         },
         {
             name: 'View My Resume',
-            link:
-                'https://drive.google.com/file/d/1dMXecxJVIeuqIdfaalDJtlW8hbd_y9I-/view?usp=sharing',
+            link: 'https://drive.google.com/file/d/1dMXecxJVIeuqIdfaalDJtlW8hbd_y9I-/view?usp=sharing',
             linkSpaced: true,
             type: 'external',
             typeAction: 'download',
@@ -248,8 +246,7 @@ export const LINK_GROUP_2 = {
             pinned: false,
             mainMedia: {
                 type: 'still',
-                link:
-                    'https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png',
+                link: 'https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png',
                 mediaText: 'Additional Links Below',
             },
             additionalLinks: [
@@ -303,8 +300,7 @@ export const LINK_GROUP_2 = {
             pinned: false,
             mainMedia: {
                 type: 'still',
-                link:
-                    'https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png',
+                link: 'https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png',
                 mediaText: 'Stream Now',
                 videoPoster: '',
             },
@@ -528,8 +524,7 @@ export const LINK_GROUP_2 = {
             pinned: true,
             mainMedia: {
                 type: 'still/external',
-                link:
-                    'https://res.cloudinary.com/rightlink/image/upload/v1611010706/PierreR/IMG_4057_uidqko.jpg',
+                link: 'https://res.cloudinary.com/rightlink/image/upload/v1611010706/PierreR/IMG_4057_uidqko.jpg',
                 mediaText: 'Image Link',
                 videoPoster: '',
             },
