@@ -1,42 +1,85 @@
 import React from 'react';
-import { Segment, Header } from 'semantic-ui-react';
+import { Segment, Header, Tab } from 'semantic-ui-react';
 import {
- // LOGO,
- // BACKGROUND,
- SOCIAL_LINKS,
- // LINK_GROUP_1,
- TITLE,
- // PROFILE_PIC,
+    // LOGO,
+    LINK_GROUP_1,
 } from '../../assets/data';
-import './main.css'
+import ProfileSection from '../Profile/Profile';
+import SocialLinks from '../SocialLinks/SocialLinks';
+import './main.css';
 
-const Main = (props) => {
+const Main = ({ editRightLink }) => {
+    const panes = [
+        {
+            menuItem: 'Profile',
+            render: () => (
+                <Tab.Pane>
+                    <ProfileSection editRightLink={editRightLink} />
+                </Tab.Pane>
+            ),
+        },
+        {
+            menuItem: 'Social Links',
+            render: () => (
+                <Tab.Pane>
+                    <SocialLinks editRightLink={editRightLink} />
+                </Tab.Pane>
+            ),
+        },
+        {
+            menuItem: 'Links',
+            render: () => (
+                <Tab.Pane>
+                    <Segment className="LinkGroup 1">
+                        <Header content="Link Group" />
+                        <Segment>
+                            <pre>
+                                <b>Group Name:</b>
+                                {LINK_GROUP_1.groupName}
+                            </pre>
+                        </Segment>
+                        <Segment>
+                            <pre>
+                                <b>Group Color:</b>
+                                {LINK_GROUP_1.groupColor}
+                            </pre>
+                        </Segment>
+                        {LINK_GROUP_1.group.map((linkX, i) => {
+                            // console.log(linkX);\
+                            return (
+                                <Segment>
+                                    <Header content={`Link ${i + 1}`} />
+                                    {Object.keys(linkX).map((key) => {
+                                        return (
+                                            <Segment>
+                                                <pre>
+                                                    <b>{`${key}:`}</b>
+                                                    {`${linkX[key]}`}
+                                                </pre>
+                                            </Segment>
+                                        );
+                                    })}
+                                </Segment>
+                            );
+                        })}
+                    </Segment>
+                </Tab.Pane>
+            ),
+        },
+        {
+            menuItem: 'Preview',
+            render: () => <Tab.Pane>{/* <Preview /> */}</Tab.Pane>,
+        },
+    ];
 
-  return (
-   <>
-   <Segment className="m0">
-    <Header content="Main" />
-     <Segment>
-       <pre>Title: {TITLE.title}</pre>
-     </Segment>
-   </Segment>
-   <Segment>
-     <Header content="Social Links" />
-     {SOCIAL_LINKS.group.map((link) => (
-       <Segment>
-        <pre>name: {link.name}</pre>
-        <pre>icon: {link.iconName}</pre>
-        <pre>link: {link.link}</pre>
-        <pre>color: {link.color}</pre>
-        <pre>secondaryColor: {link.secondaryColor ? link.secondaryColor : 'empty'}</pre>
-        <pre>surrounded: {link.surrounded ? link.surrounded : 'empty'}</pre>
-        <pre>surroundedInColor: {link.surroundedInColor}</pre>
-       </Segment>
-      )
-     )}
-   </Segment>
-   </>
-  )
-}
+    return (
+        <div className="containerSize mainContainer">
+            <Tab
+                menu={{ fluid: true, vertical: true, tabular: true }}
+                panes={panes}
+            />
+        </div>
+    );
+};
 
 export default Main;
