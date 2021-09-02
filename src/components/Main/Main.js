@@ -1,11 +1,8 @@
 import React from 'react';
-import { Segment, Header, Tab } from 'semantic-ui-react';
-import {
-    // LOGO,
-    LINK_GROUP_1,
-} from '../../assets/data';
+import { Tab } from 'semantic-ui-react';
 import ProfileSection from '../Profile/Profile';
 import SocialLinks from '../SocialLinks/SocialLinks';
+import RightLinks from '../RightLinks/RightLinks';
 import './main.css';
 
 const Main = ({ editRightLink }) => {
@@ -30,39 +27,7 @@ const Main = ({ editRightLink }) => {
             menuItem: 'Links',
             render: () => (
                 <Tab.Pane>
-                    <Segment className="LinkGroup 1">
-                        <Header content="Link Group" />
-                        <Segment>
-                            <pre>
-                                <b>Group Name:</b>
-                                {LINK_GROUP_1.groupName}
-                            </pre>
-                        </Segment>
-                        <Segment>
-                            <pre>
-                                <b>Group Color:</b>
-                                {LINK_GROUP_1.groupColor}
-                            </pre>
-                        </Segment>
-                        {LINK_GROUP_1.group.map((linkX, i) => {
-                            // console.log(linkX);\
-                            return (
-                                <Segment>
-                                    <Header content={`Link ${i + 1}`} />
-                                    {Object.keys(linkX).map((key) => {
-                                        return (
-                                            <Segment>
-                                                <pre>
-                                                    <b>{`${key}:`}</b>
-                                                    {`${linkX[key]}`}
-                                                </pre>
-                                            </Segment>
-                                        );
-                                    })}
-                                </Segment>
-                            );
-                        })}
-                    </Segment>
+                    <RightLinks editRightLink={editRightLink} />
                 </Tab.Pane>
             ),
         },
