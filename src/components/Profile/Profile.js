@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { Segment, Header, Input } from 'semantic-ui-react';
 // import { SwatchesPicker } from 'react-color';
 import { StandardInput, SelectInput } from '../CustomInput/CustomInputs';
-import { BACKGROUND, TITLE, PROFILE_PIC } from '../../assets/data';
+// import { BACKGROUND, TITLE, PROFILE_PIC } from '../../assets/data';
 // import './main.css';
 
-const Profile = ({ editRightLink }) => {
+const Profile = ({ editRightLink, data, setData }) => {
     const initalVals = {
-        title: TITLE.title,
-        titleColor: TITLE.color,
-        backgroundImage: BACKGROUND.image,
-        backgroundImageLink: BACKGROUND.imageLink,
-        backgroudColor: BACKGROUND.color,
-        profilePicture: PROFILE_PIC,
+        title: data.title.title,
+        titleColor: data.title.color,
+        backgroundImage: data.background.image,
+        backgroundImageLink: data.background.imageLink,
+        backgroudColor: data.background.color,
+        profilePicture: data.profilePicture,
     };
 
     const presetColorOptions = [
@@ -30,6 +30,11 @@ const Profile = ({ editRightLink }) => {
         { key: 'grey', text: 'grey', value: 'grey' },
         { key: 'black', text: 'black', value: 'black' },
         { key: 'custom', text: 'custom', value: 'custom' },
+    ];
+
+    const presetBool = [
+        { key: 'true', text: 'true', value: 'true' },
+        { key: 'false', text: 'false', value: 'false' },
     ];
 
     const [values, setValues] = useState(initalVals);
@@ -86,10 +91,11 @@ const Profile = ({ editRightLink }) => {
                 <pre>
                     <b>Background Image:</b>{' '}
                     {editRightLink ? (
-                        <StandardInput
+                        <SelectInput
                             field="backgroundImage"
                             values={values}
                             setValues={setValues}
+                            options={presetBool}
                         />
                     ) : initalVals.backgroundImage ? (
                         initalVals.backgroundImage
@@ -98,7 +104,7 @@ const Profile = ({ editRightLink }) => {
                     )}
                 </pre>
                 <pre>
-                    <b>BG image link:</b>{' '}
+                    <b>Background Image Link:</b>{' '}
                     {editRightLink ? (
                         <StandardInput
                             field="backgroundImageLink"
@@ -114,7 +120,7 @@ const Profile = ({ editRightLink }) => {
             </Segment>
             <Segment>
                 <pre>
-                    <b>Profile Pic:</b>{' '}
+                    <b>Profile Picture:</b>{' '}
                     {editRightLink ? (
                         <StandardInput
                             field="profilePicture"

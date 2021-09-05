@@ -5,13 +5,17 @@ import SocialLinks from '../SocialLinks/SocialLinks';
 import RightLinks from '../RightLinks/RightLinks';
 import './main.css';
 
-const Main = ({ editRightLink }) => {
+const Main = ({ editRightLink, data, setData }) => {
     const panes = [
         {
             menuItem: 'Profile',
             render: () => (
                 <Tab.Pane>
-                    <ProfileSection editRightLink={editRightLink} />
+                    <ProfileSection
+                        editRightLink={editRightLink}
+                        data={data}
+                        setData={setData}
+                    />
                 </Tab.Pane>
             ),
         },
@@ -19,7 +23,11 @@ const Main = ({ editRightLink }) => {
             menuItem: 'Social Links',
             render: () => (
                 <Tab.Pane>
-                    <SocialLinks editRightLink={editRightLink} />
+                    <SocialLinks
+                        editRightLink={editRightLink}
+                        data={data}
+                        setData={setData}
+                    />
                 </Tab.Pane>
             ),
         },
@@ -27,7 +35,11 @@ const Main = ({ editRightLink }) => {
             menuItem: 'Links',
             render: () => (
                 <Tab.Pane>
-                    <RightLinks editRightLink={editRightLink} />
+                    <RightLinks
+                        editRightLink={editRightLink}
+                        data={data}
+                        setData={setData}
+                    />
                 </Tab.Pane>
             ),
         },

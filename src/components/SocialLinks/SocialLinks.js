@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Segment, Header, Accordion, Icon } from 'semantic-ui-react';
 import { StandardInput, SelectInput } from '../CustomInput/CustomInputs';
 import AddLink from '../AddLink/AddLink';
-import {
-    // LOGO,
-    SOCIAL_LINKS,
-} from '../../assets/data';
+// import {
+//     // LOGO,
+//     SOCIAL_LINKS,
+// } from '../../assets/data';
 import './socialLinks.css';
 
-const SocialLinks = ({ editRightLink }) => {
+const SocialLinks = ({ editRightLink, data, setData }) => {
     const [activeIndex, setActiveIndex] = useState();
 
     const presetColorOptions = [
@@ -42,9 +42,10 @@ const SocialLinks = ({ editRightLink }) => {
 
     return (
         <Segment className="social links">
+            {console.log('data', data)}
             <Header content="Social Links" />
             <Accordion styled>
-                {SOCIAL_LINKS.group.map((link, i) => (
+                {data.socialLinks.group.map((link, i) => (
                     <div key={`social link ${i}`}>
                         <Accordion.Title
                             active={activeIndex === i}
@@ -163,7 +164,12 @@ const SocialLinks = ({ editRightLink }) => {
                     </div>
                 ))}
             </Accordion>
-            <AddLink />
+            <AddLink
+                collection="socialLinks"
+                data={data}
+                setData={setData}
+                linkGroup=""
+            />
         </Segment>
     );
 };
