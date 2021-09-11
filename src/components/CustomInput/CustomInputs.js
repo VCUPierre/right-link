@@ -12,7 +12,6 @@ export const StandardInput = ({ field, values, setValue }) => {
 };
 
 export const RightLinkStandardInput = ({ field, values, setValue }) => {
-    console.log('field', field, 'value', values);
     return (
         <Input
             // label={{ icon: 'asterisk', color: 'teal' }}
@@ -22,13 +21,18 @@ export const RightLinkStandardInput = ({ field, values, setValue }) => {
     );
 };
 
-export const SelectInput = ({ field, values, setValue, options }) => {
+export const SelectInput = ({ field, values, setValues, options }) => {
+    const handleChange = (e, { value }) => {
+        setValues({ ...values, [field]: value });
+    };
+
     return (
         <Select
             // label={{ icon: 'asterisk', color: 'teal' }}
             // labelPosition="left corner"
             options={options}
             defaultValue={values[field] || ''}
+            onChange={handleChange}
         />
     );
 };
