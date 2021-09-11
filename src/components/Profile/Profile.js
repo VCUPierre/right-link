@@ -93,7 +93,11 @@ const Profile = ({ editRightLink, data, setData }) => {
                         <p>
                             <b>Custom Background Color:</b>
                             <br />
-                            <a href="https://mycolor.space/gradient3">
+                            <a
+                                href="https://mycolor.space/gradient3"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
                                 Try a Gradiant?
                                 {/* add a hover text (tooltip) to say 'use this link and copy and paste exactly "css code" box' */}
                             </a>
