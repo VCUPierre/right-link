@@ -1,12 +1,16 @@
 import React from 'react';
 import { Input, Select } from 'semantic-ui-react';
 
-export const StandardInput = ({ field, values, setValue }) => {
+export const StandardInput = ({ field, values, setValues }) => {
+    const handleChange = (e, { value }) => {
+        setValues({ ...values, [field]: value });
+    };
     return (
         <Input
             // label={{ icon: 'asterisk', color: 'teal' }}
             // labelPosition="left corner"
             defaultValue={values[field] || ''}
+            onChange={handleChange}
         />
     );
 };

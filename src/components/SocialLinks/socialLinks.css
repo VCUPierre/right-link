@@ -2,3 +2,15 @@
     width: 85% !important;
     margin: auto !important;
 }
+.ui.search > .results {
+    overflow-x: auto !important;
+    max-height: 25vh !important;
+}
+.ui.search > .results .result .title {
+    border: none !important;
+}
+.ui.search > .results .result .image {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}

@@ -101,7 +101,6 @@ const Profile = ({ editRightLink, data, setData }) => {
                                 Try a Gradiant?
                                 {/* add a hover text (tooltip) to say 'use this link and copy and paste exactly "css code" box' */}
                             </a>
-                            :
                         </p>
                         {editRightLink ? (
                             <StandardInput
