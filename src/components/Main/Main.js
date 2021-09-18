@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tab } from 'semantic-ui-react';
+import { Tab, Menu, Label } from 'semantic-ui-react';
 import ProfileSection from '../Profile/Profile';
 import SocialLinks from '../SocialLinks/SocialLinks';
 import RightLinks from '../RightLinks/RightLinks';
@@ -44,7 +44,19 @@ const Main = ({ editRightLink, data, setData }) => {
             ),
         },
         {
-            menuItem: 'Preview',
+            menuItem: (
+                <Menu.Item as="a" key="preview">
+                    Preview
+                    {/* Eventually make this label track changes */}
+                    <Label
+                        color="green"
+                        floating
+                        className="verticalCenterLabel"
+                    >
+                        5
+                    </Label>
+                </Menu.Item>
+            ),
             render: () => <Tab.Pane>{/* <Preview /> */}</Tab.Pane>,
         },
     ];

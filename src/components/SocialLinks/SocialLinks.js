@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
+import { Segment, Header, Accordion, Icon, Grid } from 'semantic-ui-react';
 import {
-    Segment,
-    Header,
-    Grid,
-    Accordion,
-    Icon,
-    Search,
-} from 'semantic-ui-react';
-import { StandardInput, SelectInput } from '../CustomInput/CustomInputs';
+    RightLinkStandardInput,
+    RightLinkSelectInput,
+    RightLinkSearch,
+} from '../CustomInput/CustomInputs';
 import { ICONS } from '../../constants/icons';
 import AddLink from '../AddLink/AddLink';
 import './socialLinks.css';
 
 const SocialLinks = ({ editRightLink, data, setData }) => {
+    // const initialVals = data.socialLinks.group;
+
     const [activeIndex, setActiveIndex] = useState();
     const [searchValue, setSearchValue] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
-    // const [Loading, setLoading] = useState(false);
+    // const [values, setValues] = useState(initialVals);
 
     const presetColorOptions = [
         { key: 'red', text: 'red', value: 'red' },
@@ -40,43 +38,6 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
         { key: 'false', text: 'false', value: false },
     ];
 
-    // const presetSocials = [
-    //     { key: 'instagram', text: 'Instagram', value: 'instagram' },
-    //     { key: 'facebook', text: 'Facebook', value: 'facebook' },
-    //     { key: 'facebook messenger', text: 'Facebook messenger', value: 'facebook messenger' },
-    //     { key: 'amazon', text: 'amazon', value: 'amazon' },
-    //     { key: 'amazon pay', text: 'amazon pay', value: 'amazon pay' },
-    //     { key: 'android', text: 'android', value: 'android' },
-    //     { key: 'apple pay', text: 'apple pay', value: 'apple pay' },
-    //     { key: 'bandcamp', text: 'bandcamp', value: 'bandcamp' },
-    //     { key: 'bitcoin', text: 'bitcoin', value: 'bitcoin' },
-    //     { key: 'blogger', text: 'blogger', value: 'blogger' },
-    //     { key: 'discord', text: 'discord', value: 'discord' },
-    //     { key: 'dribbble', text: 'dribbble', value: 'dribbble' },
-    //     { key: 'dropbox', text: 'dropbox', value: 'dropbox' },
-    //     { key: 'etsy', text: 'etsy', value: 'etsy' },
-    //     { key: 'foursquare', text: 'foursquare', value: 'foursquare' },
-    //     { key: 'github', text: 'github', value: 'github' },
-    //     { key: 'gitlab', text: 'gitlab', value: 'gitlab' },
-    //     { key: 'google drive', text: 'google drive', value: 'google drive' },
-    //     { key: 'google play', text: 'google play', value: 'google play' },
-    //     { key: 'google plus square', text: 'google plus', value: 'google plus square' },
-    //     { key: 'kickstarter', text: 'kickstarter', value: 'kickstarter' },
-    //     { key: 'linkedin', text: 'linkedin', value: 'linkedin' },
-    //     { key: 'napster', text: 'napster', value: 'napster' },
-    //     { key: 'patreon', text: 'patreon', value: 'patreon' },
-    //     { key: 'paypal', text: 'paypal', value: 'paypal' },
-    //     { key: 'periscope', text: 'periscope', value: 'periscope' },
-    //     { key: 'pinterest', text: 'pinterest', value: 'pinterest' },
-    //     { key: 'reddit', text: 'reddit', value: 'reddit' },
-    //     { key: 'napster', text: 'napster', value: 'napster' },
-    //     { key: 'napster', text: 'napster', value: 'napster' },
-    //     { key: 'napster', text: 'napster', value: 'napster' },
-    //     { key: 'napster', text: 'napster', value: 'napster' },
-    //     { key: 'napster', text: 'napster', value: 'napster' },
-
-    // ]
-
     const handleClick = (e, titleProps) => {
         const { index } = titleProps;
         const newIndex = activeIndex === index ? -1 : index;
@@ -84,22 +45,11 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
         setActiveIndex(newIndex);
     };
 
-    const handleChange = (e) => {
-        // setLoading(true);
-        // setTimeout(() => setLoading(false), 400);
-        setSearchValue(e.target.value);
-    };
-
-    const handleSelect = (e, { result }) => {
-        // setLoading(true);
-        setSearchValue(result.title);
-    };
-
     return (
         <Segment className="social links">
-            {/* {console.log('data', data)} */}
             <Header content="Social Links" />
             <Accordion styled>
+                {/* {console.log('values', data)} */}
                 {data.socialLinks.group.map((link, i) => (
                     <div key={`social link ${i}`}>
                         <Accordion.Title
@@ -113,33 +63,25 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
                         <Accordion.Content active={activeIndex === i}>
                             <Segment>
                                 <pre>
-                                    <b>search:</b>
-                                    <Grid centered columns={2}>
-                                        <Grid.Row>
-                                            <Search
-                                                // loading={Loading}
-                                                aligned="left"
-                                                onResultSelect={handleSelect}
-                                                onSearchChange={handleChange}
-                                                results={ICONS.filter((x) =>
-                                                    x.title.includes(
-                                                        searchValue
-                                                    )
-                                                )}
-                                                value={searchValue}
-                                                // placeholder='st'
-                                            />
-                                        </Grid.Row>
-                                    </Grid>
-                                </pre>
-                                <pre>
                                     <b>name:</b>{' '}
                                     {editRightLink ? (
-                                        <StandardInput
-                                            field="name"
-                                            values={link}
-                                            // setValues={setValues}
-                                        />
+                                        <Grid centered columns={2}>
+                                            <Grid.Row>
+                                                <RightLinkSearch
+                                                    dataGroup="socialLinks"
+                                                    group="group"
+                                                    field="name"
+                                                    values={data}
+                                                    setValues={setData}
+                                                    searchValue={searchValue}
+                                                    setSearchValue={
+                                                        setSearchValue
+                                                    }
+                                                    collection={ICONS}
+                                                    position={i}
+                                                />
+                                            </Grid.Row>
+                                        </Grid>
                                     ) : link.name ? (
                                         link.name
                                     ) : (
@@ -147,26 +89,15 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
                                     )}
                                 </pre>
                                 <pre>
-                                    <b>icon:</b>{' '}
-                                    {editRightLink ? (
-                                        <StandardInput
-                                            field="iconName"
-                                            values={link}
-                                            // setValues={setValues}
-                                        />
-                                    ) : link.iconName ? (
-                                        link.iconName
-                                    ) : (
-                                        'empty'
-                                    )}
-                                </pre>
-                                <pre>
                                     <b>link:</b>{' '}
                                     {editRightLink ? (
-                                        <StandardInput
+                                        <RightLinkStandardInput
+                                            dataGroup="socialLinks"
+                                            group="group"
                                             field="link"
-                                            values={link}
-                                            // setValues={setValues}
+                                            values={data}
+                                            setValues={setData}
+                                            position={i}
                                         />
                                     ) : link.link ? (
                                         link.link
@@ -177,11 +108,14 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
                                 <pre>
                                     <b>color:</b>{' '}
                                     {editRightLink ? (
-                                        <SelectInput
+                                        <RightLinkSelectInput
+                                            dataGroup="socialLinks"
+                                            group="group"
                                             field="color"
-                                            values={link}
-                                            // setValues={setValues}
+                                            values={data}
+                                            setValues={setData}
                                             options={presetColorOptions}
+                                            position={i}
                                         />
                                     ) : link.color ? (
                                         link.color
@@ -190,31 +124,19 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
                                     )}
                                 </pre>
                                 <pre>
-                                    <b>secondaryColor:</b>{' '}
-                                    {editRightLink ? (
-                                        <SelectInput
-                                            field="secondaryColor"
-                                            values={link}
-                                            // setValues={setValues}
-                                            options={presetColorOptions}
-                                        />
-                                    ) : link.secondaryColor ? (
-                                        link.secondaryColor
-                                    ) : (
-                                        'empty'
-                                    )}
-                                </pre>
-                                <pre>
                                     <b>surrounded:</b>{' '}
                                     {editRightLink ? (
-                                        <SelectInput
+                                        <RightLinkSelectInput
+                                            dataGroup="socialLinks"
+                                            group="group"
                                             field="surrounded"
-                                            values={link}
-                                            // setValues={setValues}
+                                            values={data}
+                                            setValues={setData}
                                             options={presetBool}
+                                            position={i}
                                         />
                                     ) : link.surrounded ? (
-                                        link.surrounded
+                                        `${link.surrounded}`
                                     ) : (
                                         'empty'
                                     )}
@@ -222,18 +144,43 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
                                 <pre>
                                     <b>surroundedInColor:</b>{' '}
                                     {editRightLink ? (
-                                        <SelectInput
+                                        <RightLinkSelectInput
+                                            dataGroup="socialLinks"
+                                            group="group"
                                             field="surroundedInColor"
-                                            values={link}
-                                            // setValues={setValues}
+                                            values={data}
+                                            setValues={setData}
                                             options={presetBool}
+                                            position={i}
                                         />
                                     ) : link.surroundedInColor ? (
-                                        link.surroundedInColor
+                                        `${link.surroundedInColor}`
                                     ) : (
                                         'empty'
                                     )}
                                 </pre>
+                                {link.surroundedInColor ? (
+                                    <pre>
+                                        <b>secondaryColor:</b>{' '}
+                                        {editRightLink ? (
+                                            <RightLinkSelectInput
+                                                dataGroup="socialLinks"
+                                                group="group"
+                                                field="secondaryColor"
+                                                values={data}
+                                                setValues={setData}
+                                                options={presetColorOptions}
+                                                position={i}
+                                            />
+                                        ) : link.secondaryColor ? (
+                                            link.secondaryColor
+                                        ) : (
+                                            'empty'
+                                        )}
+                                    </pre>
+                                ) : (
+                                    ''
+                                )}
                             </Segment>
                         </Accordion.Content>
                     </div>

@@ -12,3 +12,6 @@
 pre p {
     overflow: auto;
 }
+.verticalCenterLabel {
+    top: 1em !important;
+}

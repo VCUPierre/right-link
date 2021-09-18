@@ -1,19 +1,9 @@
-import React, { useState } from 'react';
-import { Segment, Header, Input } from 'semantic-ui-react';
+import React from 'react';
+import { Segment, Header } from 'semantic-ui-react';
 // import { SwatchesPicker } from 'react-color';
 import { StandardInput, SelectInput } from '../CustomInput/CustomInputs';
 
 const Profile = ({ editRightLink, data, setData }) => {
-    const initialVals = {
-        title: data.title.title,
-        titleColor: data.title.color,
-        backgroundImage: data.background.image,
-        backgroundImageLink: data.background.imageLink,
-        backgroudColor: data.background.color,
-        backgroundCustomColor: data.background.customColor,
-        profilePicture: data.profilePicture,
-    };
-
     const presetColorOptions = [
         { key: 'red', text: 'red', value: 'red' },
         { key: 'orange', text: 'orange', value: 'orange' },
@@ -36,7 +26,17 @@ const Profile = ({ editRightLink, data, setData }) => {
         { key: 'false', text: 'false', value: false },
     ];
 
-    const [values, setValues] = useState(initialVals);
+    // const initialVals = {
+    //     title: data.title.title,
+    //     titleColor: data.title.color,
+    //     backgroundImage: data.background.image,
+    //     backgroundImageLink: data.background.imageLink,
+    //     backgroudColor: data.background.color,
+    //     backgroundCustomColor: data.background.customColor,
+    //     profilePicture: data.profilePicture,
+    // };
+
+    // const [values, setValues] = useState(initialVals);
 
     return (
         <Segment className="Profile">
@@ -46,12 +46,13 @@ const Profile = ({ editRightLink, data, setData }) => {
                     <b>Title:</b>{' '}
                     {editRightLink ? (
                         <StandardInput
+                            dataGroup="profile"
                             field="title"
-                            values={values}
-                            setValues={setValues}
+                            values={data}
+                            setValues={setData}
                         />
-                    ) : values.title ? (
-                        values.title
+                    ) : data.profile.title ? (
+                        data.profile.title
                     ) : (
                         'empty'
                     )}
@@ -60,13 +61,14 @@ const Profile = ({ editRightLink, data, setData }) => {
                     <b>Title Color:</b>{' '}
                     {editRightLink ? (
                         <SelectInput
+                            dataGroup="profile"
                             field="titleColor"
-                            values={values}
-                            setValues={setValues}
+                            values={data}
+                            setValues={setData}
                             options={presetColorOptions}
                         />
-                    ) : values.titleColor ? (
-                        values.titleColor
+                    ) : data.profile.titleColor ? (
+                        data.profile.titleColor
                     ) : (
                         'empty'
                     )}
@@ -77,18 +79,19 @@ const Profile = ({ editRightLink, data, setData }) => {
                     <b>Background Color:</b>{' '}
                     {editRightLink ? (
                         <SelectInput
-                            field="backgroudColor"
-                            values={values}
-                            setValues={setValues}
+                            dataGroup="profile"
+                            field="bgColor"
+                            values={data}
+                            setValues={setData}
                             options={presetColorOptions}
                         />
-                    ) : values.backgroudColor ? (
-                        <p>{`${values.backgroudColor}`}</p>
+                    ) : data.profile.bgColor ? (
+                        <p>{`${data.profile.bgColor}`}</p>
                     ) : (
                         'empty'
                     )}
                 </pre>
-                {values.backgroudColor === 'custom' ? (
+                {data.profile.bgColor === 'custom' ? (
                     <pre>
                         <p>
                             <b>Custom Background Color:</b>
@@ -104,12 +107,13 @@ const Profile = ({ editRightLink, data, setData }) => {
                         </p>
                         {editRightLink ? (
                             <StandardInput
-                                field="backgroundCustomColor"
-                                values={values}
-                                setValues={setValues}
+                                dataGroup="profile"
+                                field="bgCustomColor"
+                                values={data}
+                                setValues={setData}
                             />
-                        ) : values.backgroundCustomColor ? (
-                            <p>{`${values.backgroundCustomColor}`}</p>
+                        ) : data.profile.bgCustomColor ? (
+                            <p>{`${data.profile.bgCustomColor}`}</p>
                         ) : (
                             'empty'
                         )}
@@ -121,26 +125,30 @@ const Profile = ({ editRightLink, data, setData }) => {
                     <b>Background Image:</b>{' '}
                     {editRightLink ? (
                         <SelectInput
-                            field="backgroundImage"
-                            values={values}
-                            setValues={setValues}
+                            dataGroup="profile"
+                            field="bgImage"
+                            values={data}
+                            setValues={setData}
                             options={presetBool}
                         />
+                    ) : data.profile.bgImage ? (
+                        <p>{`${data.profile.bgImage}`}</p>
                     ) : (
-                        `${values.backgroundImage}`
+                        'empty'
                     )}
                 </pre>
-                {values.backgroundImage ? (
+                {data.profile.bgImage ? (
                     <pre>
                         <b>Background Image Link:</b>{' '}
                         {editRightLink ? (
                             <StandardInput
-                                field="backgroundImageLink"
-                                values={values}
-                                setValues={setValues}
+                                dataGroup="profile"
+                                field="bgImageLink"
+                                values={data}
+                                setValues={setData}
                             />
-                        ) : values.backgroundImageLink ? (
-                            <p>{`${values.backgroundImageLink}`}</p>
+                        ) : data.profile.bgImageLink ? (
+                            <p>{`${data.profile.bgImageLink}`}</p>
                         ) : (
                             'empty'
                         )}
@@ -154,12 +162,13 @@ const Profile = ({ editRightLink, data, setData }) => {
                     <b>Profile Picture:</b>{' '}
                     {editRightLink ? (
                         <StandardInput
+                            dataGroup="profile"
                             field="profilePicture"
-                            values={values}
-                            setValues={setValues}
+                            values={data}
+                            setValues={setData}
                         />
-                    ) : values.profilePicture ? (
-                        <p>{`${values.profilePicture}`}</p>
+                    ) : data.profile.profilePicture ? (
+                        <p>{`${data.profile.profilePicture}`}</p>
                     ) : (
                         'empty'
                     )}

@@ -1,15 +1,13 @@
 {
-    "title": {
+    "profile": {
         "title": "Pierre Randall",
-        "color": "green"
-    },
-    "logo": "colored",
-    "profilePicture": "https://res.cloudinary.com/rightlink/image/upload/v1595178893/PierreR/Profile_gjsvbm.jpg",
-    "background": {
-        "image": false,
-        "imageLink": "",
-        "color": "",
-        "customColor": "background-image: linear-gradient(to right top, #00ff80, #00ffbb, #d5fbff, #d5fbff, #ffffff, #ffffff, #ffffff, #ffffff, #d5fbff, #d5fbff, #00ffbb, #00ff80)"
+        "titleColor": "green",
+        "profilePicture": "https://res.cloudinary.com/rightlink/image/upload/v1595178893/PierreR/Profile_gjsvbm.jpg",
+        "logo": "colored",
+        "bgImage": false,
+        "bgImageLink": "",
+        "bgColor": "",
+        "bgCustomColor": "background-image: linear-gradient(to right top, #00ff80, #00ffbb, #d5fbff, #d5fbff, #ffffff, #ffffff, #ffffff, #ffffff, #d5fbff, #d5fbff, #00ffbb, #00ff80)"
     },
     "socialLinks": {
         "group": [
@@ -19,7 +17,7 @@
                 "link": "https://www.instagram.com/__pierre9",
                 "color": "purple",
                 "secondaryColor": "",
-                "surrounded": "",
+                "surrounded": false,
                 "surroundedInColor": false
             },
             {
@@ -28,7 +26,7 @@
                 "link": "https://twitter.com/__pierre9",
                 "color": "blue",
                 "secondaryColor": "",
-                "surrounded": "",
+                "surrounded": false,
                 "surroundedInColor": false
             },
             {
@@ -37,7 +35,7 @@
                 "link": "https://www.linkedin.com/in/pierre-randall-9a1517134",
                 "color": "blue",
                 "secondaryColor": "",
-                "surrounded": "",
+                "surrounded": false,
                 "surroundedInColor": false
             },
             {
@@ -46,7 +44,7 @@
                 "link": "https://github.com/VCUPierre",
                 "color": "black",
                 "secondaryColor": "",
-                "surrounded": "",
+                "surrounded": false,
                 "surroundedInColor": false
             }
         ]
