@@ -3,6 +3,7 @@ import { Segment, Header } from 'semantic-ui-react';
 // import { SwatchesPicker } from 'react-color';
 import { StandardInput, SelectInput } from '../CustomInput/CustomInputs';
 
+/*  eslint no-nested-ternary: "off" */
 const Profile = ({ editRightLink, data, setData }) => {
     const presetColorOptions = [
         { key: 'red', text: 'red', value: 'red' },

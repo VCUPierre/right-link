@@ -20,11 +20,10 @@ const equals = (a, b) => {
 
 export const StandardInput = ({ field, values, setValues, dataGroup }) => {
     const handleChange = (e, { value }) => {
-        let items = { ...values };
-        let item = { ...items[dataGroup] };
+        const items = { ...values };
+        const item = { ...items[dataGroup] };
         item[field] = value;
         items[dataGroup] = item;
-        console.log('standard items', items);
         setValues({ ...items });
     };
 
@@ -44,11 +43,10 @@ export const SelectInput = ({
     dataGroup,
 }) => {
     const handleChange = (e, { value }) => {
-        let items = { ...values };
-        let item = { ...items[dataGroup] };
+        const items = { ...values };
+        const item = { ...items[dataGroup] };
         item[field] = value;
         items[dataGroup] = item;
-        console.log('standard items', items);
         setValues({ ...items });
     };
 
@@ -77,14 +75,13 @@ export const RightLinkSearch = ({
     };
 
     const handleSelect = (e, { result }) => {
-        let items = { ...values };
-        let item = { ...items[dataGroup][group][position] };
+        const items = { ...values };
+        const item = { ...items[dataGroup][group][position] };
         item[field] = result.title;
         if (field === 'name') {
-            item['iconName'] = result.title;
+            item.iconName = result.title;
         }
         items[dataGroup][group][position] = item;
-        console.log('RLsearch items', items);
         setSearchValue(result.title);
         setValues({ ...items });
     };
@@ -112,9 +109,9 @@ export const RLGroupInput = ({
     const prevGroupName = values[0].name;
 
     const handleChange = (e, { value }) => {
-        let items = { ...data };
-        let item = [...items[dataGroup][group]];
-        let groupLinks = [...items[dataGroup].links];
+        const items = { ...data };
+        const item = [...items[dataGroup][group]];
+        const groupLinks = [...items[dataGroup].links];
         for (let i = 0; i < item.length; i += 1) {
             if (equals(item[i], values[0])) {
                 item[i][field] = value;
@@ -127,7 +124,6 @@ export const RLGroupInput = ({
         }
         items[dataGroup][group] = item;
         items[dataGroup].links = groupLinks;
-        console.log('standard items', items);
         setFilter(value);
         setData({ ...items });
     };
@@ -147,20 +143,17 @@ export const RLGroupSelectInput = ({
     data,
 }) => {
     const handleChange = (e, { value }) => {
-        let items = { ...data };
-        let item = [...items[dataGroup][group]];
+        const items = { ...data };
+        const item = [...items[dataGroup][group]];
         for (let i = 0; i < item.length; i += 1) {
             if (equals(item[i], values[0])) {
                 item[i][field] = value;
             }
         }
         items[dataGroup][group] = item;
-        console.log('select items', items);
         // setFilter(value);
         setData({ ...items });
     };
-
-    console.log('ineervalues', values);
 
     return (
         <Select
@@ -180,11 +173,10 @@ export const SocialLinksStandardInput = ({
     position,
 }) => {
     const handleChange = (e, { value }) => {
-        let items = { ...values };
-        let item = { ...items[dataGroup][group][position] };
+        const items = { ...values };
+        const item = { ...items[dataGroup][group][position] };
         item[field] = value;
         items[dataGroup][group][position] = item;
-        console.log('RLstandard items', items);
         setValues({ ...items });
     };
 
@@ -206,11 +198,10 @@ export const SocialLinksSelectInput = ({
     position,
 }) => {
     const handleChange = (e, { value }) => {
-        let items = { ...values };
-        let item = { ...items[dataGroup][group][position] };
+        const items = { ...values };
+        const item = { ...items[dataGroup][group][position] };
         item[field] = value;
         items[dataGroup][group][position] = item;
-        console.log('RLselect items', items);
         setValues({ ...items });
     };
 
@@ -232,11 +223,10 @@ export const RightLinkStandardInput = ({
     position,
 }) => {
     const handleChange = (e, { value }) => {
-        let items = { ...values };
-        let item = { ...items[dataGroup][group][position] };
+        const items = { ...values };
+        const item = { ...items[dataGroup][group][position] };
         item[field].value = value;
         items[dataGroup][group][position] = item;
-        console.log('RLstandard items', items);
         setValues({ ...items });
     };
 
@@ -258,18 +248,17 @@ export const RightLinkSelectInput = ({
     position,
 }) => {
     const handleChange = (e, { value }) => {
-        let items = { ...values };
-        let item = { ...items[dataGroup][group][position] };
+        const items = { ...values };
+        const item = { ...items[dataGroup][group][position] };
         item[field].value = value;
         if (field === 'type') {
             if (value === 'internal') {
-                item['internal'].value = true;
+                item.internal.value = true;
             } else {
-                item['internal'].value = false;
+                item.internal.value = false;
             }
         }
         items[dataGroup][group][position] = item;
-        console.log('RLselect items', items);
         setValues({ ...items });
     };
 

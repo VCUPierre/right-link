@@ -6,8 +6,7 @@ const RightLinkManagementOpt = ({
     editRightLink,
     handleSaveClick,
     saveRightLink,
-}) => {
-    return (
+}) => (
         <>
             <Button
                 icon
@@ -31,6 +30,5 @@ const RightLinkManagementOpt = ({
             </Button>
         </>
     );
-};
 
 export default RightLinkManagementOpt;

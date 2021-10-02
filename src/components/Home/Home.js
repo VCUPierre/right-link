@@ -13,7 +13,6 @@ const Home = () => {
     const [trackedChanges, setTrackedChanges] = useState(0);
 
     const handleEditClick = () => {
-        console.log('edit click');
         setEditRightLink((previous) => !previous);
         setSaveRightLink((previous) => !previous);
     };
@@ -22,10 +21,8 @@ const Home = () => {
         // setEditRightLink((previous) => !previous);
         // setSaveRightLink((previous) => !previous);
         setTrackedChanges(trackedChanges + 1);
-        console.log('save Data', data);
     };
     const handleSaveClick = () => {
-        console.log('save click');
         setEditRightLink((previous) => !previous);
         setSaveRightLink((previous) => !previous);
         saveData();

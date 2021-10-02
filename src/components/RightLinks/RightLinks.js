@@ -17,6 +17,7 @@ import AddLink from '../AddLink/AddLink';
 import RightLinkObjects from './RightLinkObjects';
 import './rightLinks.css';
 
+/*  eslint no-nested-ternary: "off" */
 const RightLinks = ({ editRightLink, data, setData }) => {
     const [activeIndex, setActiveIndex] = useState();
     const [showgroup, setShowGroup] = useState(false);
@@ -72,20 +73,16 @@ const RightLinks = ({ editRightLink, data, setData }) => {
         setActiveIndex(newIndex);
     };
 
-    const handleGroupClick = (e, data) => {
+    const handleGroupClick = (e, groupData) => {
         setShowGroup(true);
-        // console.log('handle group click', `${data.children[1]}`);
-        setRightLinksFilters(`${data.children[1]}`);
+        setRightLinksFilters(`${groupData.children[1]}`);
     };
 
     return (
         <Segment className="LinkGroup 1">
-            {console.log('data', data)}
             <div>
-                {data.rightLinks.groups.map((group, i) => {
-                    return (
-                        <Label
-                            key={`group label ${i}`}
+                {data.rightLinks.groups.map((group, i) => <Label
+                            key={`group label ${i+1}`}
                             as="a"
                             image
                             className="linkLabels"
@@ -95,8 +92,7 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                             <Icon name="linkify" />
                             {group.name}
                         </Label>
-                    );
-                })}
+                )}
                 <AddLink
                     collection="rightLinksGroups"
                     data={data}
@@ -163,9 +159,9 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                         </pre>
                     </Segment>
                     <Accordion styled>
-                        {data.rightLinks.links.map((link, i) => {
-                            return link.group.value === rightLinksFilter ? (
-                                <div key={`RightLink-${i}`}>
+                        {data.rightLinks.links.map((link, i) => 
+                            link.group.value === rightLinksFilter ? (
+                                <div key={`RightLink-${i+1}`}>
                                     <Accordion.Title
                                         active={activeIndex === i}
                                         index={i}
@@ -174,15 +170,15 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                                         <Icon name="dropdown" />
                                         {`${link.name.value}`}
                                     </Accordion.Title>
-                                    {Object.keys(link).map((key, j) => {
-                                        return ['group', 'internal'].includes(
+                                    {Object.keys(link).map((key, j) => 
+                                        ['group', 'internal'].includes(
                                             key
                                         ) ? (
                                             ''
                                         ) : (
                                             <Accordion.Content
                                                 active={activeIndex === i}
-                                                key={`RightLink-content-${j}`}
+                                                key={`RightLink-content-${j+1}`}
                                             >
                                                 <Segment>
                                                     <pre>
@@ -332,13 +328,13 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                                                     </pre>
                                                 </Segment>
                                             </Accordion.Content>
-                                        );
-                                    })}
+                                        )
+                                    )}
                                 </div>
                             ) : (
                                 ''
-                            );
-                        })}
+                            )
+                        )}
                     </Accordion>
                 </>
             ) : (

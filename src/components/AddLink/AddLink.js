@@ -123,13 +123,11 @@ const AddLink = ({ collection, data, setData, linkGroup }) => {
 
     const handleClick = () => {
         if (collection === 'socialLinks') {
-            console.log('social');
             const socialLinksCopy = data.socialLinks.group;
             socialLinksCopy.push(addSocialLink);
             setData({ ...data, [data.socialLinks.group]: [socialLinksCopy] });
         }
         if (collection === 'rightLinks') {
-            console.log('rightlink');
             const rightLinksCopy = data.rightLinks.links;
             rightLinksCopy.push(addRightLink);
             setData({
@@ -138,7 +136,6 @@ const AddLink = ({ collection, data, setData, linkGroup }) => {
             });
         }
         if (collection === 'rightLinksGroups') {
-            console.log('rightlink groups');
             const rightLinkGroupsCopy = data.rightLinks.groups;
             rightLinkGroupsCopy.push(addRightLinkGroup);
             setData({ ...data, [data.rightLinks.groups]: rightLinkGroupsCopy });

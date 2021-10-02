@@ -1,58 +1,58 @@
 import React from 'react';
-import { Image, Icon } from 'semantic-ui-react';
+// import { Link } from 'react-router-dom';
+// import { Image, Icon } from 'semantic-ui-react';
+import { Image } from 'semantic-ui-react';
 import Logo from '../../assets/TheRightClickTransparent.png';
-import { Link } from 'react-router-dom';
 // import useAuthUser from '../../../Firebase/useAuthUser';
 
-const LoggedInButtons = () => (
-    <Link to="/profile">
-        <Icon
-            name="user circle"
-            inverted
-            size="big"
-            background="white"
-            style={{ color: '#3972f4', margin: '0 1em' }}
-        />
-    </Link>
-);
+// const LoggedInButtons = () => (
+//     <Link to="/profile">
+//         <Icon
+//             name="user circle"
+//             inverted
+//             size="big"
+//             background="white"
+//             style={{ color: '#3972f4', margin: '0 1em' }}
+//         />
+//     </Link>
+// );
 
-const LoggedOutButtons = () => (
-    <>
-        <Link
-            to="/login"
-            style={{
-                margin: '0 0 0 5%',
-                padding: '.5em',
-                border: '1.5px solid #3972f4',
-                color: '#3972f4',
-                borderRadius: '6px',
-                fontWeight: '600',
-                width: '100px',
-            }}
-        >
-            Log In
-        </Link>
-        <Link
-            to="/signup"
-            style={{
-                margin: '0 0 0 5%',
-                padding: '.5em',
-                background: '#3972f4',
-                color: 'white',
-                borderRadius: '6px',
-                fontWeight: '600',
-                width: '100px',
-            }}
-        >
-            Sign Up
-        </Link>
-    </>
-);
+// const LoggedOutButtons = () => (
+//     <>
+//         <Link
+//             to="/login"
+//             style={{
+//                 margin: '0 0 0 5%',
+//                 padding: '.5em',
+//                 border: '1.5px solid #3972f4',
+//                 color: '#3972f4',
+//                 borderRadius: '6px',
+//                 fontWeight: '600',
+//                 width: '100px',
+//             }}
+//         >
+//             Log In
+//         </Link>
+//         <Link
+//             to="/signup"
+//             style={{
+//                 margin: '0 0 0 5%',
+//                 padding: '.5em',
+//                 background: '#3972f4',
+//                 color: 'white',
+//                 borderRadius: '6px',
+//                 fontWeight: '600',
+//                 width: '100px',
+//             }}
+//         >
+//             Sign Up
+//         </Link>
+//     </>
+// );
 
-const StickyBar = ({ position }) => {
+const StickyBar = () => (
     // const [authUser, loading] = useAuthUser();
-
-    return (
+    // return (
         <div
             style={{
                 justifyContent: 'space-between',
@@ -83,7 +83,7 @@ const StickyBar = ({ position }) => {
         )} */}
             </div>
         </div>
-    );
-};
+    // );
+);
 
 export default StickyBar;

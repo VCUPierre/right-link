@@ -9,6 +9,7 @@ import { ICONS } from '../../constants/icons';
 import AddLink from '../AddLink/AddLink';
 import './socialLinks.css';
 
+/*  eslint no-nested-ternary: "off" */
 const SocialLinks = ({ editRightLink, data, setData }) => {
     const [activeIndex, setActiveIndex] = useState();
 
@@ -45,7 +46,7 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
             <Header content="Social Links" />
             <Accordion styled>
                 {data.socialLinks.group.map((link, i) => (
-                    <div key={`social link ${i}`}>
+                    <div key={`social link ${i+1}`}>
                         <Accordion.Title
                             active={activeIndex === i}
                             index={i}
