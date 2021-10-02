@@ -5,7 +5,7 @@ import SocialLinks from '../SocialLinks/SocialLinks';
 import RightLinks from '../RightLinks/RightLinks';
 import './main.css';
 
-const Main = ({ editRightLink, data, setData }) => {
+const Main = ({ editRightLink, data, setData, trackedChanges }) => {
     const panes = [
         {
             menuItem: 'Profile',
@@ -48,13 +48,13 @@ const Main = ({ editRightLink, data, setData }) => {
                 <Menu.Item as="a" key="preview">
                     Preview
                     {/* Eventually make this label track changes */}
-                    <Label
-                        color="green"
-                        floating
-                        className="verticalCenterLabel"
-                    >
-                        5
-                    </Label>
+                    {trackedChanges > 0 ? (
+                        <Label color="green" className="previewLabel">
+                            {trackedChanges}
+                        </Label>
+                    ) : (
+                        ''
+                    )}
                 </Menu.Item>
             ),
             render: () => <Tab.Pane>{/* <Preview /> */}</Tab.Pane>,

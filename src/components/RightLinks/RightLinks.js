@@ -8,13 +8,13 @@ import {
     Divider,
 } from 'semantic-ui-react';
 import {
-    StandardInput,
-    SelectInput,
+    RLGroupInput,
+    RLGroupSelectInput,
     RightLinkStandardInput,
     RightLinkSelectInput,
 } from '../CustomInput/CustomInputs';
 import AddLink from '../AddLink/AddLink';
-// import { LINK_GROUP_1 } from '../../assets/data';
+import RightLinkObjects from './RightLinkObjects';
 import './rightLinks.css';
 
 const RightLinks = ({ editRightLink, data, setData }) => {
@@ -36,12 +36,11 @@ const RightLinks = ({ editRightLink, data, setData }) => {
         { key: 'brown', text: 'brown', value: 'brown' },
         { key: 'grey', text: 'grey', value: 'grey' },
         { key: 'black', text: 'black', value: 'black' },
-        { key: 'custom', text: 'custom', value: 'custom' },
     ];
 
     const presetBoolOptions = [
-        { key: 'true', text: 'true', value: 'true' },
-        { key: 'false', text: 'false', value: 'false' },
+        { key: 'true', text: 'true', value: true },
+        { key: 'false', text: 'false', value: false },
     ];
 
     const presetSideOptions = [
@@ -63,6 +62,9 @@ const RightLinks = ({ editRightLink, data, setData }) => {
         { key: 'bio', text: 'bio', value: 'bio' },
     ];
 
+    const presetAdditionalStyles = [
+        { key: 'longText', text: 'longText', value: 'longText' },
+    ];
     const handleClick = (e, titleProps) => {
         const { index } = titleProps;
         const newIndex = activeIndex === index ? -1 : index;
@@ -71,9 +73,8 @@ const RightLinks = ({ editRightLink, data, setData }) => {
     };
 
     const handleGroupClick = (e, data) => {
-        // console.log('groupState', rightLinksFilter);
-        // console.log('groupClick', data);
         setShowGroup(true);
+        // console.log('handle group click', `${data.children[1]}`);
         setRightLinksFilters(`${data.children[1]}`);
     };
 
@@ -111,13 +112,17 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                         <pre>
                             <b>Group Name:</b>{' '}
                             {editRightLink ? (
-                                <StandardInput
-                                    field="groupName"
+                                <RLGroupInput
+                                    dataGroup="rightLinks"
+                                    group="groups"
+                                    field="name"
                                     values={data.rightLinks.groups.filter(
                                         (group) =>
                                             group.name === rightLinksFilter
                                     )}
-                                    // setValues={setValues}
+                                    data={data}
+                                    setData={setData}
+                                    setFilter={setRightLinksFilters}
                                 />
                             ) : data.rightLinks.groups.filter(
                                   (group) => group.name === rightLinksFilter
@@ -132,16 +137,19 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                     </Segment>
                     <Segment>
                         <pre>
-                            <b>Group Color:</b>
+                            <b>Group Color:</b>{' '}
                             {editRightLink ? (
-                                <SelectInput
-                                    field="groupColor"
+                                <RLGroupSelectInput
+                                    dataGroup="rightLinks"
+                                    group="groups"
+                                    field="color"
                                     values={data.rightLinks.groups.filter(
                                         (group) =>
                                             group.name === rightLinksFilter
                                     )}
-                                    // setValues={setValues}
                                     options={presetColorOptions}
+                                    data={data}
+                                    setData={setData}
                                 />
                             ) : data.rightLinks.groups.filter(
                                   (group) => group.name === rightLinksFilter
@@ -156,9 +164,8 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                     </Segment>
                     <Accordion styled>
                         {data.rightLinks.links.map((link, i) => {
-                            return link.group === rightLinksFilter ? (
+                            return link.group.value === rightLinksFilter ? (
                                 <div key={`RightLink-${i}`}>
-                                    {/* <Header content={`Link ${i + 1}`} /> */}
                                     <Accordion.Title
                                         active={activeIndex === i}
                                         index={i}
@@ -168,8 +175,11 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                                         {`${link.name.value}`}
                                     </Accordion.Title>
                                     {Object.keys(link).map((key, j) => {
-                                        // console.log('link', link, 'key', key);
-                                        return (
+                                        return ['group', 'internal'].includes(
+                                            key
+                                        ) ? (
+                                            ''
+                                        ) : (
                                             <Accordion.Content
                                                 active={activeIndex === i}
                                                 key={`RightLink-content-${j}`}
@@ -181,63 +191,122 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                                                             link[key].type ===
                                                             'text' ? (
                                                                 <RightLinkStandardInput
+                                                                    dataGroup="rightLinks"
+                                                                    group="links"
                                                                     field={`${key}`}
                                                                     values={
-                                                                        link
+                                                                        data
                                                                     }
+                                                                    setValues={
+                                                                        setData
+                                                                    }
+                                                                    position={i}
                                                                 />
                                                             ) : link[key]
                                                                   .type ===
                                                               'bool' ? (
-                                                                <RightLinkStandardInput
+                                                                <RightLinkSelectInput
+                                                                    dataGroup="rightLinks"
+                                                                    group="links"
                                                                     field={`${key}`}
                                                                     values={
-                                                                        link
+                                                                        data
+                                                                    }
+                                                                    setValues={
+                                                                        setData
                                                                     }
                                                                     options={
                                                                         presetBoolOptions
                                                                     }
+                                                                    position={i}
                                                                 />
                                                             ) : link[key]
                                                                   .type ===
                                                               'typeSelect' ? (
-                                                                <RightLinkStandardInput
+                                                                <RightLinkSelectInput
+                                                                    dataGroup="rightLinks"
+                                                                    group="links"
                                                                     field={`${key}`}
                                                                     values={
-                                                                        link
+                                                                        data
+                                                                    }
+                                                                    setValues={
+                                                                        setData
                                                                     }
                                                                     options={
                                                                         presetTypeOptions
                                                                     }
+                                                                    position={i}
                                                                 />
                                                             ) : link[key]
                                                                   .type ===
                                                               'colorSelect' ? (
                                                                 <RightLinkSelectInput
+                                                                    dataGroup="rightLinks"
+                                                                    group="links"
                                                                     field={`${key}`}
                                                                     values={
-                                                                        link
+                                                                        data
+                                                                    }
+                                                                    setValues={
+                                                                        setData
                                                                     }
                                                                     options={
                                                                         presetColorOptions
                                                                     }
+                                                                    position={i}
                                                                 />
                                                             ) : link[key]
                                                                   .type ===
                                                               'sideSelect' ? (
                                                                 <RightLinkSelectInput
+                                                                    dataGroup="rightLinks"
+                                                                    group="links"
                                                                     field={`${key}`}
                                                                     values={
-                                                                        link
+                                                                        data
+                                                                    }
+                                                                    setValues={
+                                                                        setData
                                                                     }
                                                                     options={
                                                                         presetSideOptions
                                                                     }
+                                                                    position={i}
+                                                                />
+                                                            ) : link[key]
+                                                                  .type ===
+                                                              'stylesSelect' ? (
+                                                                <RightLinkSelectInput
+                                                                    dataGroup="rightLinks"
+                                                                    group="links"
+                                                                    field={`${key}`}
+                                                                    values={
+                                                                        data
+                                                                    }
+                                                                    setValues={
+                                                                        setData
+                                                                    }
+                                                                    options={
+                                                                        presetAdditionalStyles
+                                                                    }
+                                                                    position={i}
                                                                 />
                                                             ) : link[key]
                                                                   .type ===
                                                               'obj' ? (
-                                                                'objectComing soon'
+                                                                <RightLinkObjects
+                                                                    dataGroup="rightLinks"
+                                                                    group="links"
+                                                                    field={`${key}`}
+                                                                    values={
+                                                                        data
+                                                                    }
+                                                                    setValues={
+                                                                        setData
+                                                                    }
+                                                                    position={i}
+                                                                />
                                                             ) : link[key]
                                                                   .type ===
                                                               'array' ? (
@@ -245,13 +314,16 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                                                             ) : (
                                                                 'field not valid'
                                                             )
-                                                        ) : [
-                                                              'array',
-                                                              'obj',
-                                                          ].includes(
+                                                        ) : ['array'].includes(
                                                               link[key].type
                                                           ) ? (
-                                                            'obj or array'
+                                                            'array'
+                                                        ) : link[key].type ===
+                                                          'bool' ? (
+                                                            `${link[key].value}`
+                                                        ) : link[key].type ===
+                                                          'obj' ? (
+                                                            'object edit to view'
                                                         ) : link[key].value ? (
                                                             link[key].value
                                                         ) : (

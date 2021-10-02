@@ -62,7 +62,10 @@
         ],
         "links": [
             {
-                "group": "Personal Links",
+                "group": {
+                    "type": "text",
+                    "value": "Personal Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "My Business"
@@ -117,7 +120,20 @@
                 },
                 "mainMedia": {
                     "type": "obj",
-                    "value": {}
+                    "value": {
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": ""
+                        },
+                        "link": {
+                            "type": "text",
+                            "value": ""
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": ""
+                        }
+                    }
                 },
                 "additionalLinks": {
                     "type": "array",
@@ -148,14 +164,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {
@@ -164,7 +186,10 @@
                 }
             },
             {
-                "group": "Personal Links",
+                "group": {
+                    "type": "text",
+                    "value": "Personal Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "My Portfolio"
@@ -219,7 +244,20 @@
                 },
                 "mainMedia": {
                     "type": "obj",
-                    "value": {}
+                    "value": {
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": ""
+                        },
+                        "link": {
+                            "type": "text",
+                            "value": ""
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": ""
+                        }
+                    }
                 },
                 "additionalLinks": {
                     "type": "array",
@@ -250,14 +288,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {
@@ -266,7 +310,10 @@
                 }
             },
             {
-                "group": "Personal Links",
+                "group": {
+                    "type": "text",
+                    "value": "Personal Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "View My Resume"
@@ -321,7 +368,20 @@
                 },
                 "mainMedia": {
                     "type": "obj",
-                    "value": {}
+                    "value": {
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": ""
+                        },
+                        "link": {
+                            "type": "text",
+                            "value": ""
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": ""
+                        }
+                    }
                 },
                 "additionalLinks": {
                     "type": "array",
@@ -352,14 +412,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {
@@ -368,7 +434,10 @@
                 }
             },
             {
-                "group": "Personal Links",
+                "group": {
+                    "type": "text",
+                    "value": "Personal Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "Patreon"
@@ -423,7 +492,20 @@
                 },
                 "mainMedia": {
                     "type": "obj",
-                    "value": {}
+                    "value": {
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": ""
+                        },
+                        "link": {
+                            "type": "text",
+                            "value": ""
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": ""
+                        }
+                    }
                 },
                 "additionalLinks": {
                     "type": "array",
@@ -454,14 +536,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {
@@ -470,7 +558,10 @@
                 }
             },
             {
-                "group": "Demo Links",
+                "group": {
+                    "type": "text",
+                    "value": "Demo Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "Internal Link"
@@ -526,9 +617,18 @@
                 "mainMedia": {
                     "type": "obj",
                     "value": {
-                        "type": "media",
-                        "link": "https://www.youtube.com/watch?v=UfQHEpf2q8k",
-                        "mediaText": "Great Cover ^^"
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": "media"
+                        },
+                        "link": {
+                            "type": "text",
+                            "value": "https://www.youtube.com/watch?v=UfQHEpf2q8k"
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": "Great Cover ^^"
+                        }
                     }
                 },
                 "additionalLinks": {
@@ -573,14 +673,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {
@@ -589,7 +695,10 @@
                 }
             },
             {
-                "group": "Demo Links",
+                "group": {
+                    "type": "text",
+                    "value": "Demo Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "Basic Banner Link"
@@ -645,9 +754,18 @@
                 "mainMedia": {
                     "type": "obj",
                     "value": {
-                        "type": "still",
-                        "link": "https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png",
-                        "mediaText": "Additional Links Below"
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": "still"
+                        },
+                        "link": {
+                            "type": "text",
+                            "value": "https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png"
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": "Additional Links Below"
+                        }
                     }
                 },
                 "additionalLinks": {
@@ -700,14 +818,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {
@@ -716,7 +840,10 @@
                 }
             },
             {
-                "group": "Demo Links",
+                "group": {
+                    "type": "text",
+                    "value": "Demo Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "Countdown Banner Link"
@@ -772,10 +899,22 @@
                 "mainMedia": {
                     "type": "obj",
                     "value": {
-                        "type": "still",
-                        "link": "https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png",
-                        "mediaText": "Stream Now",
-                        "videoPoster": ""
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": "still"
+                        },
+                        "link": {
+                            "type": "text",
+                            "value": "https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png"
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": "Stream Now"
+                        },
+                        "videoPoster": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "additionalLinks": {
@@ -807,14 +946,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {
@@ -823,7 +968,10 @@
                 }
             },
             {
-                "group": "Demo Links",
+                "group": {
+                    "type": "text",
+                    "value": "Demo Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "Attached Links 1 of 2"
@@ -878,7 +1026,20 @@
                 },
                 "mainMedia": {
                     "type": "obj",
-                    "value": {}
+                    "value": {
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": ""
+                        },
+                        "link": {
+                            "type": "text",
+                            "value": ""
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": ""
+                        }
+                    }
                 },
                 "additionalLinks": {
                     "type": "array",
@@ -930,14 +1091,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {
@@ -946,7 +1113,10 @@
                 }
             },
             {
-                "group": "Demo Links",
+                "group": {
+                    "type": "text",
+                    "value": "Demo Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "Attached Links 2 of 2"
@@ -1001,7 +1171,20 @@
                 },
                 "mainMedia": {
                     "type": "obj",
-                    "value": {}
+                    "value": {
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": ""
+                        },
+                        "link": {
+                            "type": "text",
+                            "value": ""
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": ""
+                        }
+                    }
                 },
                 "additionalLinks": {
                     "type": "array",
@@ -1053,14 +1236,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {
@@ -1069,7 +1258,10 @@
                 }
             },
             {
-                "group": "Demo Links",
+                "group": {
+                    "type": "text",
+                    "value": "Demo Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "Colored Link"
@@ -1124,7 +1316,20 @@
                 },
                 "mainMedia": {
                     "type": "obj",
-                    "value": {}
+                    "value": {
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": ""
+                        },
+                        "link": {
+                            "type": "text",
+                            "value": ""
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": ""
+                        }
+                    }
                 },
                 "additionalLinks": {
                     "type": "array",
@@ -1176,14 +1381,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {
@@ -1192,7 +1403,10 @@
                 }
             },
             {
-                "group": "Demo Links",
+                "group": {
+                    "type": "text",
+                    "value": "Demo Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "Text Only Link"
@@ -1247,7 +1461,20 @@
                 },
                 "mainMedia": {
                     "type": "obj",
-                    "value": {}
+                    "value": {
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": ""
+                        },
+                        "link": {
+                            "type": "text",
+                            "value": ""
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": ""
+                        }
+                    }
                 },
                 "additionalLinks": {
                     "type": "array",
@@ -1278,14 +1505,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {
@@ -1303,7 +1536,10 @@
                 }
             },
             {
-                "group": "Demo Links",
+                "group": {
+                    "type": "text",
+                    "value": "Demo Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "Image Link"
@@ -1359,10 +1595,22 @@
                 "mainMedia": {
                     "type": "obj",
                     "value": {
-                        "type": "still/external",
-                        "link": "https://res.cloudinary.com/rightlink/image/upload/v1611010706/PierreR/IMG_4057_uidqko.jpg",
-                        "mediaText": "Image Link",
-                        "videoPoster": ""
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": "still/external"
+                        },
+                        "link": {
+                            "type": "text",
+                            "value": "https://res.cloudinary.com/rightlink/image/upload/v1611010706/PierreR/IMG_4057_uidqko.jpg"
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": "Image Link"
+                        },
+                        "videoPoster": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "additionalLinks": {
@@ -1394,14 +1642,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {
@@ -1410,7 +1664,10 @@
                 }
             },
             {
-                "group": "Demo Links",
+                "group": {
+                    "type": "text",
+                    "value": "Demo Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "Video Link"
@@ -1466,10 +1723,22 @@
                 "mainMedia": {
                     "type": "obj",
                     "value": {
-                        "type": "video",
-                        "link": "https://www.youtube.com/watch?v=UfQHEpf2q8k",
-                        "mediaText": "Video Link",
-                        "videoPoster": ""
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": "video"
+                        },
+                        "link": {
+                            "type": "text",
+                            "value": "https://www.youtube.com/watch?v=UfQHEpf2q8k"
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": "Video Link"
+                        },
+                        "videoPoster": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "additionalLinks": {
@@ -1501,14 +1770,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {
@@ -1517,7 +1792,10 @@
                 }
             },
             {
-                "group": "Demo Links",
+                "group": {
+                    "type": "text",
+                    "value": "Demo Links"
+                },
                 "name": {
                     "type": "text",
                     "value": "Slideshow Link"
@@ -1573,14 +1851,26 @@
                 "mainMedia": {
                     "type": "obj",
                     "value": {
-                        "type": "slideshow",
-                        "mediaText": "Slideshow Link",
-                        "speed": 1000,
-                        "collection": [
-                            "https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png",
-                            "https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png",
-                            "https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png"
-                        ]
+                        "type": {
+                            "type": "mediaSelect",
+                            "value": "slideshow"
+                        },
+                        "mediaText": {
+                            "type": "text",
+                            "value": "Slideshow Link"
+                        },
+                        "speed": {
+                            "type": "number",
+                            "value": 1000
+                        },
+                        "collection": {
+                            "type": "array",
+                            "value": [
+                                "https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png",
+                                "https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png",
+                                "https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png"
+                            ]
+                        }
                     }
                 },
                 "additionalLinks": {
@@ -1612,14 +1902,20 @@
                     "value": "left"
                 },
                 "additionalStyle": {
-                    "type": "text",
+                    "type": "stylesSelect",
                     "value": "longText"
                 },
                 "modalAlternativeText": {
                     "type": "obj",
                     "value": {
-                        "removed": false,
-                        "text": ""
+                        "removed": {
+                            "type": "bool",
+                            "value": false
+                        },
+                        "text": {
+                            "type": "text",
+                            "value": ""
+                        }
                     }
                 },
                 "bioContent": {

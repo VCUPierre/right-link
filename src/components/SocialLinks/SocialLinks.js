@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Segment, Header, Accordion, Icon, Grid } from 'semantic-ui-react';
 import {
-    RightLinkStandardInput,
-    RightLinkSelectInput,
+    SocialLinksStandardInput,
+    SocialLinksSelectInput,
     RightLinkSearch,
 } from '../CustomInput/CustomInputs';
 import { ICONS } from '../../constants/icons';
@@ -10,11 +10,7 @@ import AddLink from '../AddLink/AddLink';
 import './socialLinks.css';
 
 const SocialLinks = ({ editRightLink, data, setData }) => {
-    // const initialVals = data.socialLinks.group;
-
     const [activeIndex, setActiveIndex] = useState();
-    const [searchValue, setSearchValue] = useState('');
-    // const [values, setValues] = useState(initialVals);
 
     const presetColorOptions = [
         { key: 'red', text: 'red', value: 'red' },
@@ -30,7 +26,6 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
         { key: 'brown', text: 'brown', value: 'brown' },
         { key: 'grey', text: 'grey', value: 'grey' },
         { key: 'black', text: 'black', value: 'black' },
-        { key: 'custom', text: 'custom', value: 'custom' },
     ];
 
     const presetBool = [
@@ -49,7 +44,6 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
         <Segment className="social links">
             <Header content="Social Links" />
             <Accordion styled>
-                {/* {console.log('values', data)} */}
                 {data.socialLinks.group.map((link, i) => (
                     <div key={`social link ${i}`}>
                         <Accordion.Title
@@ -73,10 +67,6 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
                                                     field="name"
                                                     values={data}
                                                     setValues={setData}
-                                                    searchValue={searchValue}
-                                                    setSearchValue={
-                                                        setSearchValue
-                                                    }
                                                     collection={ICONS}
                                                     position={i}
                                                 />
@@ -91,7 +81,7 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
                                 <pre>
                                     <b>link:</b>{' '}
                                     {editRightLink ? (
-                                        <RightLinkStandardInput
+                                        <SocialLinksStandardInput
                                             dataGroup="socialLinks"
                                             group="group"
                                             field="link"
@@ -108,7 +98,7 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
                                 <pre>
                                     <b>color:</b>{' '}
                                     {editRightLink ? (
-                                        <RightLinkSelectInput
+                                        <SocialLinksSelectInput
                                             dataGroup="socialLinks"
                                             group="group"
                                             field="color"
@@ -126,7 +116,7 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
                                 <pre>
                                     <b>surrounded:</b>{' '}
                                     {editRightLink ? (
-                                        <RightLinkSelectInput
+                                        <SocialLinksSelectInput
                                             dataGroup="socialLinks"
                                             group="group"
                                             field="surrounded"
@@ -144,7 +134,7 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
                                 <pre>
                                     <b>surroundedInColor:</b>{' '}
                                     {editRightLink ? (
-                                        <RightLinkSelectInput
+                                        <SocialLinksSelectInput
                                             dataGroup="socialLinks"
                                             group="group"
                                             field="surroundedInColor"
@@ -163,7 +153,7 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
                                     <pre>
                                         <b>secondaryColor:</b>{' '}
                                         {editRightLink ? (
-                                            <RightLinkSelectInput
+                                            <SocialLinksSelectInput
                                                 dataGroup="socialLinks"
                                                 group="group"
                                                 field="secondaryColor"

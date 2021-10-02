@@ -10,6 +10,7 @@ const Home = () => {
     const [editRightLink, setEditRightLink] = useState(false);
     const [saveRightLink, setSaveRightLink] = useState(true);
     const [data, setData] = useState(userData);
+    const [trackedChanges, setTrackedChanges] = useState(0);
 
     const handleEditClick = () => {
         console.log('edit click');
@@ -20,6 +21,7 @@ const Home = () => {
     const saveData = () => {
         // setEditRightLink((previous) => !previous);
         // setSaveRightLink((previous) => !previous);
+        setTrackedChanges(trackedChanges + 1);
         console.log('save Data', data);
     };
     const handleSaveClick = () => {
@@ -47,6 +49,7 @@ const Home = () => {
                     editRightLink={editRightLink}
                     data={data}
                     setData={setData}
+                    trackedChanges={trackedChanges}
                 />
             </Grid.Row>
         </Grid>
