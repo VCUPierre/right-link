@@ -14,6 +14,7 @@ import {
     RightLinkSelectInput,
 } from '../CustomInput/CustomInputs';
 import AddLink from '../AddLink/AddLink';
+import RightLinkObjectPreview from './RightLinkObjectPreview';
 import RightLinkObjects from './RightLinkObjects';
 import './rightLinks.css';
 
@@ -319,7 +320,8 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                                                             `${link[key].value}`
                                                         ) : link[key].type ===
                                                           'obj' ? (
-                                                            'object edit to view'
+                                                            // 'object edit to view'
+                                                            <RightLinkObjectPreview RLObj={link[key]} />
                                                         ) : link[key].value ? (
                                                             link[key].value
                                                         ) : (

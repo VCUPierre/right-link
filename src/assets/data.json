@@ -619,7 +619,7 @@
                     "value": {
                         "type": {
                             "type": "mediaSelect",
-                            "value": "media"
+                            "value": "video"
                         },
                         "link": {
                             "type": "text",
@@ -911,7 +911,7 @@
                             "type": "text",
                             "value": "Stream Now"
                         },
-                        "videoPoster": {
+                        "videoPosterLink": {
                             "type": "text",
                             "value": ""
                         }
@@ -1597,7 +1597,7 @@
                     "value": {
                         "type": {
                             "type": "mediaSelect",
-                            "value": "still/external"
+                            "value": "still"
                         },
                         "link": {
                             "type": "text",
@@ -1607,7 +1607,7 @@
                             "type": "text",
                             "value": "Image Link"
                         },
-                        "videoPoster": {
+                        "videoPosterLink": {
                             "type": "text",
                             "value": ""
                         }
@@ -1735,7 +1735,7 @@
                             "type": "text",
                             "value": "Video Link"
                         },
-                        "videoPoster": {
+                        "videoPosterLink": {
                             "type": "text",
                             "value": ""
                         }
