@@ -137,6 +137,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType": "addLinks",
                     "value": []
                 },
                 "color": {
@@ -182,6 +183,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": []
                 }
             },
@@ -261,6 +263,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType": "addLinks",
                     "value": []
                 },
                 "color": {
@@ -306,6 +309,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": []
                 }
             },
@@ -385,6 +389,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType": "addLinks",
                     "value": []
                 },
                 "color": {
@@ -430,6 +435,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": []
                 }
             },
@@ -509,6 +515,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType": "addLinks",
                     "value": []
                 },
                 "color": {
@@ -554,6 +561,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": []
                 }
             },
@@ -633,6 +641,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType": "addLinks",
                     "value": [
                         {
                             "name": "Tidal",
@@ -691,6 +700,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": []
                 }
             },
@@ -770,6 +780,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType": "addLinks",
                     "value": [
                         {
                             "name": "Tidal",
@@ -836,6 +847,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": []
                 }
             },
@@ -919,6 +931,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType": "addLinks",
                     "value": []
                 },
                 "color": {
@@ -964,6 +977,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": []
                 }
             },
@@ -1043,6 +1057,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType": "addLinks",
                     "value": [
                         {
                             "name": "Tidal",
@@ -1109,6 +1124,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": []
                 }
             },
@@ -1188,6 +1204,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType": "addLinks",
                     "value": [
                         {
                             "name": "Tidal",
@@ -1254,6 +1271,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": []
                 }
             },
@@ -1333,6 +1351,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType":"addLinks",
                     "value": [
                         {
                             "name": "Tidal",
@@ -1399,6 +1418,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": []
                 }
             },
@@ -1478,6 +1498,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType": "addLinks",
                     "value": []
                 },
                 "color": {
@@ -1523,6 +1544,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": [
                         {
                             "header": "",
@@ -1615,6 +1637,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType": "addLinks",
                     "value": []
                 },
                 "color": {
@@ -1660,6 +1683,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": []
                 }
             },
@@ -1743,6 +1767,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType": "addLinks",
                     "value": []
                 },
                 "color": {
@@ -1788,6 +1813,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": []
                 }
             },
@@ -1865,6 +1891,7 @@
                         },
                         "collection": {
                             "type": "array",
+                            "arrayType": "collection",
                             "value": [
                                 "https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png",
                                 "https://res.cloudinary.com/rightlink/image/upload/v1595189055/PierreR/image_ard339.png",
@@ -1875,6 +1902,7 @@
                 },
                 "additionalLinks": {
                     "type": "array",
+                    "arrayType": "addLinks",
                     "value": []
                 },
                 "color": {
@@ -1920,6 +1948,7 @@
                 },
                 "bioContent": {
                     "type": "array",
+                    "arrayType": "bio",
                     "value": []
                 }
             }

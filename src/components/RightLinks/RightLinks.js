@@ -16,6 +16,7 @@ import {
 import AddLink from '../AddLink/AddLink';
 import RightLinkObjectPreview from './RightLinkObjectPreview';
 import RightLinkObjects from './RightLinkObjects';
+import { RightLinksArrays } from './RightLinkArrays';
 import './rightLinks.css';
 
 /*  eslint no-nested-ternary: "off" */
@@ -108,6 +109,7 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                     <Segment>
                         <pre>
                             <b>Group Name:</b>{' '}
+                            {/* need to add text length validation to this field */}
                             {editRightLink ? (
                                 <RLGroupInput
                                     dataGroup="rightLinks"
@@ -124,9 +126,9 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                             ) : data.rightLinks.groups.filter(
                                   (group) => group.name === rightLinksFilter
                               )[0].name ? (
-                                data.rightLinks.groups.filter(
+                                <p>{`${data.rightLinks.groups.filter(
                                     (group) => group.name === rightLinksFilter
-                                )[0].name
+                                )[0].name}`}</p>
                             ) : (
                                 'empty'
                             )}
@@ -314,16 +316,15 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                                                         ) : ['array'].includes(
                                                               link[key].type
                                                           ) ? (
-                                                            'array'
+                                                            <RightLinksArrays RLArr={link[key]}/>
                                                         ) : link[key].type ===
                                                           'bool' ? (
                                                             `${link[key].value}`
                                                         ) : link[key].type ===
                                                           'obj' ? (
-                                                            // 'object edit to view'
                                                             <RightLinkObjectPreview RLObj={link[key]} />
                                                         ) : link[key].value ? (
-                                                            link[key].value
+                                                            <p>{`${link[key].value}`}</p>
                                                         ) : (
                                                             'empty'
                                                         )}

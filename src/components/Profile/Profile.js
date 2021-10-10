@@ -53,7 +53,7 @@ const Profile = ({ editRightLink, data, setData }) => {
                             setValues={setData}
                         />
                     ) : data.profile.title ? (
-                        data.profile.title
+                        <p>{`${data.profile.title}`}</p>
                     ) : (
                         'empty'
                     )}

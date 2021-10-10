@@ -91,7 +91,7 @@ const SocialLinks = ({ editRightLink, data, setData }) => {
                                             position={i}
                                         />
                                     ) : link.link ? (
-                                        link.link
+                                        <p>{`${link.link}`}</p>
                                     ) : (
                                         'empty'
                                     )}
