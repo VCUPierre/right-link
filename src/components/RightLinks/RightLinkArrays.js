@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment } from 'semantic-ui-react';
+import { Segment, Input, TextArea } from 'semantic-ui-react';
 
 /* eslint no-unused-vars: 0 */
 /*  eslint no-nested-ternary: "off" */
@@ -11,7 +11,70 @@ export const EditRightLinkArrays = ({
     setValues,
     position,
 }) => {
+    const handleStandardInputChange = ({ value }, valueField, innerArrayPosition) => {
+        const items = { ...values };
+        const item = { ...items[dataGroup][group][position][field].value[innerArrayPosition] };
+        item[valueField] = value;
+        items[dataGroup][group][position][field].value[innerArrayPosition] = item;
+        setValues({ ...items });
+    };
 
+    const editAdditionalLinks = () => <>
+        {Object.keys(values[dataGroup][group][position][field].value).map(
+            (arrayItem, i) => (
+                <Segment>
+                    <pre>
+                        <b>Link Name:</b>{' '}
+                        <Input 
+                            defaultValue={values[dataGroup][group][position][field].value[i].name}
+                            onChange={(e, d) =>
+                                handleStandardInputChange(d, 'name', i)
+                            }
+                        />
+                    </pre>
+                    <pre>
+                        <b>Link:</b>{' '}
+                        <Input 
+                            defaultValue={values[dataGroup][group][position][field].value[i].link}
+                            onChange={(e, d) =>
+                                handleStandardInputChange(d, 'link', i)
+                            }
+                        />
+                    </pre>
+                </Segment>
+            )
+        )}
+    </>
+
+    const editBioLinks = () => <>
+        {Object.keys(values[dataGroup][group][position][field].value).map(
+            (arrayItem, i) => (
+                <Segment>
+                    <pre>
+                        <b>Header:</b>{' '}
+                        <Input 
+                            defaultValue={values[dataGroup][group][position][field].value[i].header}
+                            onChange={(e, d) =>
+                                handleStandardInputChange(d, 'header', i)
+                            }
+                        />
+                    </pre>
+                    <pre>
+                        <b>Body:</b>{' '}
+                        <TextArea  
+                            value={values[dataGroup][group][position][field].value[i].subHeader}
+                            onChange={(e, d) =>
+                                handleStandardInputChange(d, 'subHeader', i)
+                            }
+                            rows={4}
+                        />
+                    </pre>
+                </Segment>
+            )
+        )}
+    </>
+
+    return values[dataGroup][group][position][field].arrayType === 'addLinks' ? editAdditionalLinks() : values[dataGroup][group][position][field].arrayType === 'bio' ? editBioLinks() : 'collection stuff coming soon'
 }
 
 export const RightLinksArrays = ({

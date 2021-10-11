@@ -16,7 +16,7 @@ import {
 import AddLink from '../AddLink/AddLink';
 import RightLinkObjectPreview from './RightLinkObjectPreview';
 import RightLinkObjects from './RightLinkObjects';
-import { RightLinksArrays } from './RightLinkArrays';
+import { RightLinksArrays, EditRightLinkArrays } from './RightLinkArrays';
 import './rightLinks.css';
 
 /*  eslint no-nested-ternary: "off" */
@@ -309,7 +309,18 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                                                             ) : link[key]
                                                                   .type ===
                                                               'array' ? (
-                                                                'arrayComming soon'
+                                                                <EditRightLinkArrays 
+                                                                    dataGroup="rightLinks"
+                                                                    group="links"
+                                                                    field={`${key}`}
+                                                                    values={
+                                                                        data
+                                                                    }
+                                                                    setValues={
+                                                                        setData
+                                                                    }
+                                                                    position={i}
+                                                                />
                                                             ) : (
                                                                 'field not valid'
                                                             )
