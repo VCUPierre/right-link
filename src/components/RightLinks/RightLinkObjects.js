@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Input, Segment, Select } from 'semantic-ui-react';
+import { EditRightLinkArrays } from './RightLinkArrays';
 
 /*  eslint no-nested-ternary: "off" */
 const RightLinkObjects = ({
@@ -14,14 +15,27 @@ const RightLinkObjects = ({
 
     const presetMediaOptions = [
         { key: 'still', text: 'still', value: 'still' },
-        { key: 'mp4', text: 'mp4', value: 'mp4' },
         { key: 'video', text: 'video', value: 'video' },
+        { key: 'slideshow', text: 'slideshow', value: 'slideshow' },
     ];
 
     const presetBoolOptions = [
         { key: 'true', text: 'true', value: true },
         { key: 'false', text: 'false', value: false },
     ];
+
+    const presetSpeedOptions = [
+        { key: '1', text: '1 sec', value: 1000 },
+        { key: '2', text: '2 sec', value: 2000 },
+        { key: '3', text: '3 sec', value: 3000 },
+        { key: '4', text: '4 sec', value: 4000 },
+        { key: '5', text: '5 sec', value: 5000 },
+        { key: '6', text: '6 sec', value: 6000 },
+        { key: '7', text: '7 sec', value: 7000 },
+        { key: '8', text: '8 sec', value: 8000 },
+        { key: '9', text: '9 sec', value: 9000 },
+        { key: '10', text: '10 sec', value: 10000 },
+    ]
 
     const handleStandardInputChange = ({ value }, valueField) => {
         const items = { ...values };
@@ -108,11 +122,49 @@ const RightLinkObjects = ({
                             </pre>
                         </Segment>
                     ) : (
+                        values[dataGroup][group][position][field].value[
+                            objectKey
+                        ].type === 'array' ? (
+                            <Segment key={`RLObjectEdit ${objectKey} ${i+1}`}>
+                               <pre>
+                                <b>Collection:</b> {' '}
+                                <EditRightLinkArrays 
+                                    dataGroup={dataGroup}
+                                    group={group}
+                                    field={field}
+                                    values={values}
+                                    setValues={setValues}
+                                    position={position}
+                                />
+                               </pre> 
+                            </Segment>
+                    ) : (
+                        values[dataGroup][group][position][field].value[
+                        objectKey
+                        ].type === 'number' ? (
+                            <Segment key={`RLObjectEdit ${objectKey} ${i+1}`}>
+                            <pre>
+                                <b>{`${objectKey}:`}</b> {' '}
+                                <Select
+                                    defaultValue={
+                                        values[dataGroup][group][position][field].value[
+                                            objectKey
+                                        ].value || ''
+                                    }
+                                    options={presetSpeedOptions}
+                                    onChange={(e, d) =>
+                                        handleSelectChange(d, objectKey)
+                                    }
+                                />
+                            </pre>
+                        </Segment>
+                    ) :
+                    (
                         'Other Not Yet Implented'
                     )
-            )))}
+            )))))}
         </>
-    );
+    ); 
 };
 
 export default RightLinkObjects;

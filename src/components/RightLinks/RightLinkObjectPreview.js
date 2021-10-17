@@ -3,6 +3,7 @@ import React from 'react';
 import { Segment } from 'semantic-ui-react';
 import { RightLinksArrays } from './RightLinkArrays';
 
+/*  eslint no-nested-ternary: "off" */
 const RightLinkObjectPreview = ({
     RLObj
 }) => <>
@@ -14,8 +15,11 @@ const RightLinkObjectPreview = ({
                 ) : (
                 <pre>
                     <b>{`${objectKey}:`}</b> {' '}
-                    {RLObj.value[objectKey].value !== '' ? 
-                    <p>{`${RLObj.value[objectKey].value}`}</p> : 'empty'}
+                    {   objectKey === 'speed' ? 
+                        <p>{`${RLObj.value[objectKey].value.toString().slice(0, -3)} sec`}</p>:
+                        RLObj.value[objectKey].value !== '' ? 
+                        <p>{`${RLObj.value[objectKey].value}`}</p> : 'empty'
+                    }
                 </pre>
                 )}
             </Segment>

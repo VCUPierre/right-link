@@ -1,5 +1,6 @@
 import React from 'react';
 import { Segment, Input, TextArea } from 'semantic-ui-react';
+import AddLink from '../AddLink/AddLink';
 
 /* eslint no-unused-vars: 0 */
 /*  eslint no-nested-ternary: "off" */
@@ -16,6 +17,14 @@ export const EditRightLinkArrays = ({
         const item = { ...items[dataGroup][group][position][field].value[innerArrayPosition] };
         item[valueField] = value;
         items[dataGroup][group][position][field].value[innerArrayPosition] = item;
+        setValues({ ...items });
+    };
+
+    const handleCollectionChange = ({ value }, innerArrayPosition) => {
+        const items = { ...values };
+        let item = { ...items[dataGroup][group][position][field].value.collection.value[innerArrayPosition] };
+        item = value;
+        items[dataGroup][group][position][field].value.collection.value[innerArrayPosition] = item;
         setValues({ ...items });
     };
 
@@ -44,6 +53,7 @@ export const EditRightLinkArrays = ({
                 </Segment>
             )
         )}
+        <AddLink collection='addLink' data={values} setData={setValues} linkGroup={position} />
     </>
 
     const editBioLinks = () => <>
@@ -72,9 +82,29 @@ export const EditRightLinkArrays = ({
                 </Segment>
             )
         )}
+        <AddLink collection='bio' data={values} setData={setValues} linkGroup={position} />
     </>
 
-    return values[dataGroup][group][position][field].arrayType === 'addLinks' ? editAdditionalLinks() : values[dataGroup][group][position][field].arrayType === 'bio' ? editBioLinks() : 'collection stuff coming soon'
+    const editCollection = () => <>
+        {values[dataGroup][group][position][field].value.collection.value.map(
+            (arrayItem, i) => (
+                <Segment>
+                    <pre>
+                        <b>{`Image ${i+1}:`}</b>{' '}
+                        <Input 
+                            defaultValue={values[dataGroup][group][position][field].value.collection.value[i]}
+                            onChange={(e, d) =>
+                                handleCollectionChange(d, i)
+                            }
+                        />
+                    </pre>
+                </Segment>
+            )
+        )}
+        <AddLink collection='collection' data={values} setData={setValues} linkGroup={position} />
+    </>
+
+    return values[dataGroup][group][position][field].arrayType === 'addLinks' ? editAdditionalLinks() : values[dataGroup][group][position][field].arrayType === 'bio' ? editBioLinks() : editCollection() 
 }
 
 export const RightLinksArrays = ({

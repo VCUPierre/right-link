@@ -121,6 +121,19 @@ const AddLink = ({ collection, data, setData, linkGroup }) => {
         },
     };
 
+    const addAdditionalLinks = {
+        name: '',
+        link: ''
+    }
+
+    const addBio = {
+        header: '',
+        subHeader: ''
+    }
+
+    // need to return empty, if edit mode return 
+    const addCollection = '';
+
     const handleClick = () => {
         if (collection === 'socialLinks') {
             const socialLinksCopy = data.socialLinks.group;
@@ -139,6 +152,21 @@ const AddLink = ({ collection, data, setData, linkGroup }) => {
             const rightLinkGroupsCopy = data.rightLinks.groups;
             rightLinkGroupsCopy.push(addRightLinkGroup);
             setData({ ...data, [data.rightLinks.groups]: rightLinkGroupsCopy });
+        }
+        if (collection === 'addLink') {
+            const linksCopy = data.rightLinks.links[linkGroup].additionalLinks.value;
+            linksCopy.push(addAdditionalLinks);
+            setData({ ...data, [data.rightLinks.links[linkGroup].additionalLinks.value]: linksCopy})
+        }
+        if (collection === 'bio') {
+            const bioCopy = data.rightLinks.links[linkGroup].bioContent.value;
+            bioCopy.push(addBio);
+            setData({ ...data, [data.rightLinks.links[linkGroup].bioContent.value]: bioCopy})
+        }
+        if (collection === 'collection') {
+            const collectionCopy = data.rightLinks.links[linkGroup].mainMedia.value.collection.value;
+            collectionCopy.push(addCollection);
+            setData({ ...data, [data.rightLinks.links[linkGroup].mainMedia.value.collection.value]: collectionCopy})
         }
     };
 
