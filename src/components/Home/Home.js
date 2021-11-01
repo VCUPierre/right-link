@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Grid } from 'semantic-ui-react';
+// import * as Diff from 'diff';
 import Header from '../Header/Header';
 import RightLinkManagementOpt from '../RightLinkManagementOpt/RightLinkManagementOpt';
 import Main from '../Main/Main';
@@ -11,6 +12,7 @@ const Home = () => {
     const [saveRightLink, setSaveRightLink] = useState(true);
     const [data, setData] = useState(userData);
     const [trackedChanges, setTrackedChanges] = useState(0);
+    const originalData = userData;
 
     const handleEditClick = () => {
         setEditRightLink((previous) => !previous);
@@ -27,6 +29,39 @@ const Home = () => {
         setSaveRightLink((previous) => !previous);
         saveData();
     };
+
+    // const compareJSON = () => {
+    // const ret = {};
+    // const arr = [];
+
+    // const diff = Diff.diffJson(originalData, data);
+    // console.log('diff', diff);
+    // Object.keys(originalData).forEach((key) => {
+    //     if (
+    //         !Object.prototype.hasOwnProperty.call(data, key) ||
+    //         originalData[key] !== data[key]
+    //     ) {
+    //         if (
+    //             !Array.isArray(data[key]) ||
+    //             !(
+    //                 JSON.stringify(data[key]) ===
+    //                 JSON.stringify(originalData[key])
+    //             )
+    //         ) {
+    //             ret[key] = data[key];
+    //             arr.push(data[key]);
+    //         }
+    //     }
+    // });
+    // console.log('arr', arr.length);
+    // console.log('obj', ret);
+
+    // return ret;
+    // };
+
+    // useEffect(() => {
+    //     compareJSON();
+    // }, [data]);
 
     return (
         <Grid columns={2}>
@@ -47,6 +82,7 @@ const Home = () => {
                     data={data}
                     setData={setData}
                     trackedChanges={trackedChanges}
+                    originalData={originalData}
                 />
             </Grid.Row>
         </Grid>
