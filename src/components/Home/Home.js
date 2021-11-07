@@ -33,19 +33,13 @@ const Home = () => {
         const userRef = db.collection('users').doc(userDbDoc);
 
         let dataToSave = [];
-        console.log('save userRightLinkData', userRightLinkData);
         if (userRightLinkData.data && userRightLinkData.data.length > 0) {
             const rightLinkExists = _.find(
                 userRightLinkData.data,
                 (x) => x.uuid === data.uuid
             );
-            console.log('rightLinkExists', rightLinkExists);
             if (rightLinkExists) {
                 const fullUserRightLinkDataCopy = userRightLinkData.data;
-                console.log(
-                    'fullUserRightLinkDataCopy',
-                    fullUserRightLinkDataCopy
-                );
                 for (let i = 0; i < fullUserRightLinkDataCopy.length; i += 1) {
                     if (
                         fullUserRightLinkDataCopy[i].uuid ===
@@ -69,7 +63,6 @@ const Home = () => {
         } else {
             dataToSave = [{ ...data }];
         }
-        console.log('data2save', dataToSave);
 
         try {
             db.runTransaction(async (transaction) => {
@@ -79,7 +72,6 @@ const Home = () => {
                 if (!doc.exists) return;
                 // update the users array after getting it from Firestore.
                 const newUserDataArray = doc.data();
-                console.log('newUserDataArr1', newUserDataArray);
                 const newVersion = {
                     version: dataToSave.version ? dataToSave.version + 1 : 1,
                     date: currentDate,
@@ -89,7 +81,6 @@ const Home = () => {
                     newUserDataArray.data.shift();
                 }
                 newUserDataArray.data.push(newVersion);
-                console.log('newUserDataArr2', newUserDataArray);
 
                 transaction.update(userRef, { ...newUserDataArray });
             });
@@ -115,13 +106,10 @@ const Home = () => {
                         id: doc.id,
                         ...doc.data(),
                     }));
-                    console.log('items', items);
                     if (items[0] && items[0].data) {
                         currentData = _.maxBy(items[0].data, 'version');
                         setUserDbDoc(items[0].id);
                     }
-
-                    console.log('currentData', currentData);
 
                     setUserRightLinkData(
                         currentData && currentData !== 0 ? currentData : []
