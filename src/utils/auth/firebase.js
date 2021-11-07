@@ -39,6 +39,7 @@ const signInWithGoogle = async () => {
                 name: user.displayName,
                 authProvider: 'google',
                 email: user.email,
+                data: [],
             });
         }
         localStorage.setItem('TRC-User', JSON.stringify(user));
@@ -68,6 +69,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
             name,
             authProvider: 'local',
             email,
+            data: [],
         });
         localStorage.setItem('TRC-User', JSON.stringify(user));
     } catch (err) {
@@ -93,7 +95,7 @@ const logout = async () => {
 
 export {
     // auth,
-    // db,
+    db,
     signInWithGoogle,
     signInWithEmailAndPassword,
     registerWithEmailAndPassword,

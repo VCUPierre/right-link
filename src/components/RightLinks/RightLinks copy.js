@@ -1,5 +1,8 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
-import { Segment, Header, Accordion, Icon, Label } from 'semantic-ui-react';
+import { Segment, Header, Accordion, Icon } from 'semantic-ui-react';
 import {
     StandardInput,
     SelectInput,
@@ -111,7 +114,6 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                                 {`Right Link ${i}`}
                             </Accordion.Title>
                             {Object.keys(link).map((key) => {
-                                // console.log('link', link, 'key', key);
                                 return (
                                     <Accordion.Content
                                         active={activeIndex === i}
