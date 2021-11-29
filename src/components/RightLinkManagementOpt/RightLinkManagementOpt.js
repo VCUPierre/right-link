@@ -7,6 +7,11 @@ const RightLinkManagementOpt = ({
     editRightLink,
     handleSaveClick,
     saveRightLink,
+    handlePublishClick,
+    publishRightLink,
+    handleCancelClick,
+    disableToggledBanner,
+    disableToggle,
 }) => (
     <>
         <Button
@@ -19,17 +24,52 @@ const RightLinkManagementOpt = ({
             <Icon name="edit outline" />
             Edit
         </Button>
-        <Button
-            icon
-            labelPosition="right"
-            color="green"
-            disabled={saveRightLink}
-            onClick={handleSaveClick}
-        >
-            Save
-            <Icon name="save outline" />
-        </Button>
-        <ProfileButton />
+        {editRightLink ? (
+            <Button
+                icon
+                labelPosition="left"
+                color="red"
+                disabled={!editRightLink}
+                onClick={handleCancelClick}
+            >
+                Cancel
+                <Icon name="cancel" />
+            </Button>
+        ) : (
+            ''
+        )}
+        {editRightLink ? (
+            <Button
+                icon
+                labelPosition="right"
+                color="green"
+                disabled={saveRightLink}
+                onClick={handleSaveClick}
+            >
+                Save
+                <Icon name="save outline" />
+            </Button>
+        ) : (
+            ''
+        )}
+        {saveRightLink && !publishRightLink ? (
+            <Button
+                icon
+                labelPosition="right"
+                color="violet"
+                disabled={publishRightLink}
+                onClick={handlePublishClick}
+            >
+                Publish
+                <Icon name="paper plane outline" />
+            </Button>
+        ) : (
+            ''
+        )}
+        <ProfileButton
+            disableToggle={disableToggle}
+            disableToggledBanner={disableToggledBanner}
+        />
     </>
 );
 

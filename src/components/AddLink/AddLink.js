@@ -74,10 +74,29 @@ const AddLink = ({ collection, data, setData, linkGroup }) => {
         },
         mainMedia: {
             type: 'obj',
-            value: {},
+            value: {
+                type: {
+                    type: 'mediaSelect',
+                    value: '',
+                },
+                mediaText: {
+                    type: 'text',
+                    value: '',
+                },
+                speed: {
+                    type: 'number',
+                    value: 1000,
+                },
+                collection: {
+                    type: 'array',
+                    arrayType: 'collection',
+                    value: [],
+                },
+            },
         },
         additionalLinks: {
             type: 'array',
+            arrayType: 'addLinks',
             value: [],
         },
         color: {
@@ -111,62 +130,89 @@ const AddLink = ({ collection, data, setData, linkGroup }) => {
         modalAlternativeText: {
             type: 'obj',
             value: {
-                removed: false,
-                text: '',
+                removed: {
+                    type: 'bool',
+                    value: false,
+                },
+                text: {
+                    type: 'text',
+                    value: '',
+                },
             },
         },
         bioContent: {
             type: 'array',
+            arrayType: 'bio',
             value: [],
         },
     };
 
     const addAdditionalLinks = {
         name: '',
-        link: ''
-    }
+        link: '',
+    };
 
     const addBio = {
         header: '',
-        subHeader: ''
-    }
+        subHeader: '',
+    };
 
-    // need to return empty, if edit mode return 
+    // need to return empty, if edit mode return
     const addCollection = '';
 
     const handleClick = () => {
         if (collection === 'socialLinks') {
-            const socialLinksCopy = data.socialLinks.group;
+            const items = { ...data };
+            const item = { ...items.socialLinks };
+            const socialLinksCopy = item.group;
             socialLinksCopy.push(addSocialLink);
-            setData({ ...data, [data.socialLinks.group]: [socialLinksCopy] });
+            items.socialLinks.group = socialLinksCopy;
+            setData(items);
         }
         if (collection === 'rightLinks') {
-            const rightLinksCopy = data.rightLinks.links;
+            const items = { ...data };
+            const item = { ...items.rightLinks };
+            const rightLinksCopy = item.links;
             rightLinksCopy.push(addRightLink);
-            setData({
-                ...data,
-                [data.rightLinks.links]: rightLinksCopy,
-            });
+            items.rightLinks.links = rightLinksCopy;
+            setData(items);
         }
         if (collection === 'rightLinksGroups') {
-            const rightLinkGroupsCopy = data.rightLinks.groups;
+            const items = { ...data };
+            const item = { ...items.rightLinks };
+            const rightLinkGroupsCopy = item.groups;
             rightLinkGroupsCopy.push(addRightLinkGroup);
-            setData({ ...data, [data.rightLinks.groups]: rightLinkGroupsCopy });
+            items.rightLinks.groups = rightLinkGroupsCopy;
+            setData(items);
         }
         if (collection === 'addLink') {
-            const linksCopy = data.rightLinks.links[linkGroup].additionalLinks.value;
+            const linksCopy =
+                data.rightLinks.links[linkGroup].additionalLinks.value;
             linksCopy.push(addAdditionalLinks);
-            setData({ ...data, [data.rightLinks.links[linkGroup].additionalLinks.value]: linksCopy})
+            setData({
+                ...data,
+                [data.rightLinks.links[linkGroup].additionalLinks.value]:
+                    linksCopy,
+            });
         }
         if (collection === 'bio') {
             const bioCopy = data.rightLinks.links[linkGroup].bioContent.value;
             bioCopy.push(addBio);
-            setData({ ...data, [data.rightLinks.links[linkGroup].bioContent.value]: bioCopy})
+            setData({
+                ...data,
+                [data.rightLinks.links[linkGroup].bioContent.value]: bioCopy,
+            });
         }
         if (collection === 'collection') {
-            const collectionCopy = data.rightLinks.links[linkGroup].mainMedia.value.collection.value;
+            const collectionCopy =
+                data.rightLinks.links[linkGroup].mainMedia.value.collection
+                    .value;
             collectionCopy.push(addCollection);
-            setData({ ...data, [data.rightLinks.links[linkGroup].mainMedia.value.collection.value]: collectionCopy})
+            setData({
+                ...data,
+                [data.rightLinks.links[linkGroup].mainMedia.value.collection
+                    .value]: collectionCopy,
+            });
         }
     };
 

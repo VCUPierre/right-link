@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 import { Modal, List, Icon } from 'semantic-ui-react';
 import './collectionStyle.css';
@@ -7,8 +8,9 @@ const RightLinkCollectionModal = ({
     isModalOpen,
     setIsModalOpen,
     collection,
-    setSelectedRightLink,
+    setSelectedOriginalRightLinkData,
     setData,
+    setPublishRightLink,
 }) => {
     const initialRightLink = {
         profile: {
@@ -31,13 +33,17 @@ const RightLinkCollectionModal = ({
     };
 
     const handleClick = (selection) => {
+        const selectionClone = _.cloneDeep(selection);
+
         if (selection.uuid) {
             setData(selection);
-            setSelectedRightLink(selection);
+            setSelectedOriginalRightLinkData(selectionClone);
+            setPublishRightLink(selection.publish);
         } else {
             const uniqueId = uuidv4();
             setData({ uuid: uniqueId, ...selection });
-            setSelectedRightLink({ uuid: uniqueId, ...selection });
+            const selectionCopy = { uuid: uniqueId, ...selectionClone };
+            setSelectedOriginalRightLinkData(selectionCopy);
         }
         setIsModalOpen((prev) => !prev);
     };
@@ -53,8 +59,9 @@ const RightLinkCollectionModal = ({
             <Modal.Content>
                 <List divided selection verticalAlign="middle">
                     {collection && collection.length !== 0
-                        ? collection.data.map((rightLink) => (
+                        ? collection.data.map((rightLink, i) => (
                               <List.Item
+                                  key={`list-item${i + 1}`}
                                   className="centeredListItem"
                                   onClick={() => handleClick(rightLink)}
                               >

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Segment, Header } from 'semantic-ui-react';
-// import { SwatchesPicker } from 'react-color';
+import { Segment, Header, Image } from 'semantic-ui-react';
 import { StandardInput, SelectInput } from '../CustomInput/CustomInputs';
 
 /*  eslint no-nested-ternary: "off" */
@@ -26,18 +25,6 @@ const Profile = ({ editRightLink, data, setData }) => {
         { key: 'true', text: 'true', value: true },
         { key: 'false', text: 'false', value: false },
     ];
-
-    // const initialVals = {
-    //     title: data.title.title,
-    //     titleColor: data.title.color,
-    //     backgroundImage: data.background.image,
-    //     backgroundImageLink: data.background.imageLink,
-    //     backgroudColor: data.background.color,
-    //     backgroundCustomColor: data.background.customColor,
-    //     profilePicture: data.profilePicture,
-    // };
-
-    // const [values, setValues] = useState(initialVals);
 
     return (
         <Segment className="Profile">
@@ -149,7 +136,11 @@ const Profile = ({ editRightLink, data, setData }) => {
                                 setValues={setData}
                             />
                         ) : data.profile.bgImageLink ? (
-                            <p>{`${data.profile.bgImageLink}`}</p>
+                            <Image
+                                src={data.profile.bgImageLink}
+                                size="small"
+                                inline
+                            />
                         ) : (
                             'empty'
                         )}
@@ -169,7 +160,11 @@ const Profile = ({ editRightLink, data, setData }) => {
                             setValues={setData}
                         />
                     ) : data.profile.profilePicture ? (
-                        <p>{`${data.profile.profilePicture}`}</p>
+                        <Image
+                            src={data.profile.profilePicture}
+                            size="small"
+                            inline
+                        />
                     ) : (
                         'empty'
                     )}

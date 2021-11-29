@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Input, Select, Search } from 'semantic-ui-react';
+import API from '../../utils/api';
+import { UPLOAD_PRESET } from '../../config/config';
 
 const equals = (a, b) => {
     if (a === b) return true;
@@ -27,11 +29,38 @@ export const StandardInput = ({ field, values, setValues, dataGroup }) => {
         setValues({ ...items });
     };
 
+    const handleUpload = async (e) => {
+        const userFolder = JSON.parse(localStorage.getItem('TRC-User')).email;
+        const formData = new FormData();
+        formData.append('file', e.target.files[0]);
+        formData.append('upload_preset', UPLOAD_PRESET);
+        formData.append('folder', userFolder);
+
+        const imageURL = await API.uploadImage(formData);
+
+        const items = { ...values };
+        const item = { ...items[dataGroup] };
+        item[field] = imageURL.data.secure_url;
+        items[dataGroup] = item;
+        setValues({ ...items });
+    };
+
     return (
-        <Input
-            defaultValue={values[dataGroup][field] || ''}
-            onChange={handleChange}
-        />
+        <>
+            {['profilePicture', 'bgImageLink'].includes(field) ? (
+                <Input
+                    type="file"
+                    id={field}
+                    name={field}
+                    onChange={handleUpload}
+                />
+            ) : (
+                <Input
+                    defaultValue={values[dataGroup][field] || ''}
+                    onChange={handleChange}
+                />
+            )}
+        </>
     );
 };
 
@@ -202,7 +231,7 @@ export const SocialLinksSelectInput = ({
         const item = { ...items[dataGroup][group][position] };
         item[field] = value;
         items[dataGroup][group][position] = item;
-        setValues({ ...items });
+        setValues(items);
     };
 
     return (

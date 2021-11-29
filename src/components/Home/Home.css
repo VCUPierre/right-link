@@ -2,3 +2,6 @@
     justify-content: flex-end !important;
     margin-right: 5% !important;
 }
+.p-0 {
+    padding: 0 !important;
+}

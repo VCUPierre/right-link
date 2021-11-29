@@ -23,7 +23,7 @@ import './rightLinks.css';
 const RightLinks = ({ editRightLink, data, setData }) => {
     const [activeIndex, setActiveIndex] = useState();
     const [showgroup, setShowGroup] = useState(false);
-    const [rightLinksFilter, setRightLinksFilters] = useState('');
+    const [rightLinksFilter, setRightLinksFilter] = useState('');
 
     const presetColorOptions = [
         { key: 'red', text: 'red', value: 'red' },
@@ -77,24 +77,25 @@ const RightLinks = ({ editRightLink, data, setData }) => {
 
     const handleGroupClick = (e, groupData) => {
         setShowGroup(true);
-        setRightLinksFilters(`${groupData.children[1]}`);
+        setRightLinksFilter(`${groupData.children[1]}`);
     };
 
     return (
         <Segment className="LinkGroup 1">
             <div>
-                {data.rightLinks.groups.map((group, i) => <Label
-                            key={`group label ${i+1}`}
-                            as="a"
-                            image
-                            className="linkLabels"
-                            color={group.color}
-                            onClick={handleGroupClick}
-                        >
-                            <Icon name="linkify" />
-                            {group.name}
-                        </Label>
-                )}
+                {data.rightLinks.groups.map((group, i) => (
+                    <Label
+                        key={`group label ${i + 1}`}
+                        as="a"
+                        image
+                        className="linkLabels"
+                        color={group.color}
+                        onClick={handleGroupClick}
+                    >
+                        <Icon name="linkify" />
+                        {group.name}
+                    </Label>
+                ))}
                 <AddLink
                     collection="rightLinksGroups"
                     data={data}
@@ -121,14 +122,17 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                                     )}
                                     data={data}
                                     setData={setData}
-                                    setFilter={setRightLinksFilters}
+                                    setFilter={setRightLinksFilter}
                                 />
                             ) : data.rightLinks.groups.filter(
                                   (group) => group.name === rightLinksFilter
                               )[0].name ? (
-                                <p>{`${data.rightLinks.groups.filter(
-                                    (group) => group.name === rightLinksFilter
-                                )[0].name}`}</p>
+                                <p>{`${
+                                    data.rightLinks.groups.filter(
+                                        (group) =>
+                                            group.name === rightLinksFilter
+                                    )[0].name
+                                }`}</p>
                             ) : (
                                 'empty'
                             )}
@@ -162,9 +166,9 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                         </pre>
                     </Segment>
                     <Accordion styled>
-                        {data.rightLinks.links.map((link, i) => 
-                            link.group.value === rightLinksFilter ? (
-                                <div key={`RightLink-${i+1}`}>
+                        {data.rightLinks.links.map((link, i) =>
+                            link.group === rightLinksFilter ? (
+                                <div key={`RightLink-${i + 1}`}>
                                     <Accordion.Title
                                         active={activeIndex === i}
                                         index={i}
@@ -173,15 +177,15 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                                         <Icon name="dropdown" />
                                         {`${link.name.value}`}
                                     </Accordion.Title>
-                                    {Object.keys(link).map((key, j) => 
-                                        ['group', 'internal'].includes(
-                                            key
-                                        ) ? (
+                                    {Object.keys(link).map((key, j) =>
+                                        ['group', 'internal'].includes(key) ? (
                                             ''
                                         ) : (
                                             <Accordion.Content
                                                 active={activeIndex === i}
-                                                key={`RightLink-content-${j+1}`}
+                                                key={`RightLink-content-${
+                                                    j + 1
+                                                }`}
                                             >
                                                 <Segment>
                                                     <pre>
@@ -309,7 +313,7 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                                                             ) : link[key]
                                                                   .type ===
                                                               'array' ? (
-                                                                <EditRightLinkArrays 
+                                                                <EditRightLinkArrays
                                                                     dataGroup="rightLinks"
                                                                     group="links"
                                                                     field={`${key}`}
@@ -327,13 +331,21 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                                                         ) : ['array'].includes(
                                                               link[key].type
                                                           ) ? (
-                                                            <RightLinksArrays RLArr={link[key]}/>
+                                                            <RightLinksArrays
+                                                                RLArr={
+                                                                    link[key]
+                                                                }
+                                                            />
                                                         ) : link[key].type ===
                                                           'bool' ? (
                                                             `${link[key].value}`
                                                         ) : link[key].type ===
                                                           'obj' ? (
-                                                            <RightLinkObjectPreview RLObj={link[key]} />
+                                                            <RightLinkObjectPreview
+                                                                RLObj={
+                                                                    link[key]
+                                                                }
+                                                            />
                                                         ) : link[key].value ? (
                                                             <p>{`${link[key].value}`}</p>
                                                         ) : (
@@ -355,6 +367,7 @@ const RightLinks = ({ editRightLink, data, setData }) => {
                 'Please select one from above or add a new group for your Right-Links'
             )}
             <div>
+                {/* {console.log(data)} */}
                 <AddLink
                     collection="rightLinks"
                     data={data}

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Tab, Menu, Label } from 'semantic-ui-react';
+import { Tab, Menu } from 'semantic-ui-react';
 import ProfileSection from '../Profile/Profile';
 import SocialLinks from '../SocialLinks/SocialLinks';
 import RightLinks from '../RightLinks/RightLinks';
 import './main.css';
 
-const Main = ({ editRightLink, data, setData, trackedChanges }) => {
+const Main = ({ editRightLink, data, setData }) => {
     const panes = [
         {
             menuItem: 'Profile',
@@ -48,13 +48,6 @@ const Main = ({ editRightLink, data, setData, trackedChanges }) => {
                 <Menu.Item as="a" key="preview">
                     Preview
                     {/* Eventually make this label track changes */}
-                    {trackedChanges > 0 ? (
-                        <Label color="green" className="previewLabel">
-                            {trackedChanges}
-                        </Label>
-                    ) : (
-                        ''
-                    )}
                 </Menu.Item>
             ),
             render: () => <Tab.Pane>{/* <Preview /> */}</Tab.Pane>,
