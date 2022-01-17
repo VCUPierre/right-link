@@ -4,6 +4,7 @@ import {
     registerWithEmailAndPassword,
     signInWithGoogle,
 } from '../../utils/auth/firebase';
+import Header from '../Header/Header';
 import './register.css';
 
 function Register({ history }) {
@@ -25,6 +26,8 @@ function Register({ history }) {
         [history]
     );
     return (
+        <>
+        <Header />
         <div className="register">
             <form className="register__container" onSubmit={handleSignUp}>
                 <h1>Register</h1>
@@ -61,6 +64,7 @@ function Register({ history }) {
                 </div>
             </form>
         </div>
+        </>
     );
 }
 export default withRouter(Register);

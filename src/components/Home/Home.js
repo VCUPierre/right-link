@@ -42,9 +42,14 @@ const Home = () => {
         let dataToSave = [];
         let dataToFormat = {
             ...data,
-            publish: false,
         };
 
+        if (action === 'save') {
+            dataToFormat = {
+                ...dataToFormat,
+                publish: false,
+            };
+        }
         if (action === 'publish') {
             dataToFormat = {
                 ...dataToFormat,
@@ -84,6 +89,39 @@ const Home = () => {
         }
 
         return dataToSave;
+    };
+
+    const deleteData = async () => {
+        const currentDate = new Date().toLocaleString();
+        const userRef = db.collection('users').doc(userDbDoc);
+
+        const dataToSave = formatDataToSave('delete');
+        try {
+            db.runTransaction(async (transaction) => {
+                const doc = await transaction.get(userRef);
+
+                // doc doesn't exist; can't update
+                if (!doc.exists) return;
+                // update the users array after getting it from Firestore.
+                const newUserDataArray = doc.data();
+                const newVersion = {
+                    version: dataToSave.version
+                        ? dataToSave.version + 1
+                        : 1,
+                    date: currentDate,
+                    data: dataToSave.data ? dataToSave.data : dataToSave,
+                };
+                if (newUserDataArray.data.length >= MAX_VERSIONS) {
+                    newUserDataArray.data.shift();
+                }
+                newUserDataArray.data.push(newVersion);
+
+                transaction.update(userRef, { ...newUserDataArray });
+            });
+        } catch (e) {
+            console.log('Transaction failed: ', e);
+        }
+
     };
 
     const saveData = async () => {
@@ -233,6 +271,7 @@ const Home = () => {
                     }
                     setData={setData}
                     setPublishRightLink={setPublishRightLink}
+                    deleteData={deleteData}
                 />
             ) : (
                 <>

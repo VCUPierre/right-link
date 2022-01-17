@@ -13,6 +13,7 @@ const RightLinkCollectionModal = ({
     setSelectedOriginalRightLinkData,
     setData,
     setPublishRightLink,
+    deleteData
 }) => {
     const initialRightLink = {
         profile: {
@@ -34,12 +35,13 @@ const RightLinkCollectionModal = ({
         },
     };
 
-    const handleClick = (selection, action) => {
+    const handleClick = async (selection, action) => {
         // alert(`${action}`);
         if (action === 'delete click') {
             // eslint-disable-next-line no-restricted-globals
             if (confirm('Are you sure you want to delete?')) {
-                const userData = [...collection];
+                console.log('collection', collection)
+                const userData = {...collection};
                 const rightLinkDataCopy = userData.data;
                 const dataWithoutSelected = rightLinkDataCopy.filter(
                     (dataCopy) => dataCopy.uuid !== selection.uuid
@@ -47,7 +49,8 @@ const RightLinkCollectionModal = ({
                 userData.data = dataWithoutSelected;
                 console.log('removed selected', userData);
                 setData(userData);
-            }
+                await deleteData();
+              }
         } else {
             // console.log('selection', selection);
             const selectionClone = _.cloneDeep(selection);
@@ -79,31 +82,33 @@ const RightLinkCollectionModal = ({
                 <List divided selection verticalAlign="middle">
                     {collection && collection.length !== 0
                         ? collection.data.map((rightLink, i) => (
-                              <List.Item
-                                  key={`list-item${i + 1}`}
-                                  className="centeredListItem"
-                                  //   onClick={() =>
-                                  //       handleClick(rightLink, 'reg click')
-                                  //   }
-                              >
-                                  <List.Content
-                                      verticalAlign="bottom"
-                                      onClick={() =>
-                                          handleClick(rightLink, 'reg click')
-                                      }
-                                  >
-                                      {rightLink.profile.title}
-                                  </List.Content>
-                                  <List.Content floated="right">
-                                      <Delete
-                                          collection="link"
-                                          data={collection}
-                                          selected={rightLink}
-                                          setData={setData}
-                                          handleClick={handleClick}
-                                      />
-                                  </List.Content>
-                              </List.Item>
+                            <>
+                                {rightLink.profile ? (
+                                    <List.Item
+                                    key={`list-item${i + 1}`}
+                                    className="centeredListItem"
+                                >
+                                    <List.Content
+                                        verticalAlign="bottom"
+                                        onClick={() =>
+                                            handleClick(rightLink, 'reg click')
+                                        }
+                                    >
+                                        {rightLink.profile.title}
+                                    </List.Content>
+                                    <List.Content floated="right">
+                                        <Delete
+                                            collection="link"
+                                            data={collection}
+                                            selected={rightLink}
+                                            setData={setData}
+                                            handleClick={handleClick}
+                                        />
+                                    </List.Content>
+                                </List.Item>
+                                ): ''}
+                              
+                            </>
                           ))
                         : ''}
                 </List>

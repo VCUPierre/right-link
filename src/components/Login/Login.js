@@ -2,6 +2,7 @@ import React, { useContext, useCallback } from 'react';
 import { withRouter, Redirect, Link } from 'react-router-dom';
 import firebaseApp, { signInWithGoogle } from '../../utils/auth/firebase';
 import { FirebaseContext } from '../../utils/auth/FirebaseContext';
+import Header from '../Header/Header';
 import './login.css';
 
 function Login({ history }) {
@@ -28,6 +29,8 @@ function Login({ history }) {
     }
 
     return (
+        <>
+        <Header />
         <div className="login">
             <form className="login__container" onSubmit={handleLogin}>
                 <h1>Log in</h1>
@@ -62,6 +65,7 @@ function Login({ history }) {
                 </div>
             </form>
         </div>
+        </>
     );
 }
 export default withRouter(Login);

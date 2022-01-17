@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import { sendPasswordResetEmail } from '../../utils/auth/firebase';
 import { FirebaseContext } from '../../utils/auth/FirebaseContext';
+import Header from '../Header/Header';
 import './reset.css';
 
 function Reset() {
@@ -13,6 +14,8 @@ function Reset() {
     }
 
     return (
+        <>
+        <Header />
         <div className="reset">
             <div className="reset__container">
                 <input
@@ -35,6 +38,7 @@ function Reset() {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 export default withRouter(Reset);
