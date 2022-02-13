@@ -13,7 +13,7 @@ const RightLinkCollectionModal = ({
     setSelectedOriginalRightLinkData,
     setData,
     setPublishRightLink,
-    deleteData
+    deleteData,
 }) => {
     const initialRightLink = {
         profile: {
@@ -40,19 +40,21 @@ const RightLinkCollectionModal = ({
         if (action === 'delete click') {
             // eslint-disable-next-line no-restricted-globals
             if (confirm('Are you sure you want to delete?')) {
-                console.log('collection', collection)
-                const userData = {...collection};
+                const userData = { ...collection };
                 const rightLinkDataCopy = userData.data;
                 const dataWithoutSelected = rightLinkDataCopy.filter(
                     (dataCopy) => dataCopy.uuid !== selection.uuid
                 );
                 userData.data = dataWithoutSelected;
-                console.log('removed selected', userData);
                 setData(userData);
-                await deleteData();
-              }
+                await deleteData({
+                    item: {
+                        type: 'rightLink',
+                        element: selection.profile.title,
+                    },
+                });
+            }
         } else {
-            // console.log('selection', selection);
             const selectionClone = _.cloneDeep(selection);
 
             if (selection.uuid) {
@@ -82,33 +84,37 @@ const RightLinkCollectionModal = ({
                 <List divided selection verticalAlign="middle">
                     {collection && collection.length !== 0
                         ? collection.data.map((rightLink, i) => (
-                            <>
-                                {rightLink.profile ? (
-                                    <List.Item
-                                    key={`list-item${i + 1}`}
-                                    className="centeredListItem"
-                                >
-                                    <List.Content
-                                        verticalAlign="bottom"
-                                        onClick={() =>
-                                            handleClick(rightLink, 'reg click')
-                                        }
-                                    >
-                                        {rightLink.profile.title}
-                                    </List.Content>
-                                    <List.Content floated="right">
-                                        <Delete
-                                            collection="link"
-                                            data={collection}
-                                            selected={rightLink}
-                                            setData={setData}
-                                            handleClick={handleClick}
-                                        />
-                                    </List.Content>
-                                </List.Item>
-                                ): ''}
-                              
-                            </>
+                              <>
+                                  {rightLink.profile ? (
+                                      <List.Item
+                                          key={`list-item${i + 1}`}
+                                          className="centeredListItem"
+                                      >
+                                          <List.Content
+                                              verticalAlign="bottom"
+                                              onClick={() =>
+                                                  handleClick(
+                                                      rightLink,
+                                                      'reg click'
+                                                  )
+                                              }
+                                          >
+                                              {rightLink.profile.title}
+                                          </List.Content>
+                                          <List.Content floated="right">
+                                              <Delete
+                                                  collection="link"
+                                                  data={collection}
+                                                  selected={rightLink}
+                                                  setData={setData}
+                                                  handleClick={handleClick}
+                                              />
+                                          </List.Content>
+                                      </List.Item>
+                                  ) : (
+                                      ''
+                                  )}
+                              </>
                           ))
                         : ''}
                 </List>

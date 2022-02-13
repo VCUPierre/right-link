@@ -1,4 +1,3 @@
-/* eslint-disable arrow-body-style */
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { CloudinaryContext } from 'cloudinary-react';

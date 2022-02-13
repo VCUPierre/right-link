@@ -91,11 +91,31 @@ const Home = () => {
         return dataToSave;
     };
 
-    const deleteData = async () => {
+    const deleteFromData = ({ item, dataToSave }) => {
+        if (item.type === 'rightLink') {
+            return dataToSave.data.filter((rightLink) => {
+                return (
+                    rightLink.profile?.title !== item.element &&
+                    rightLink.profile
+                );
+            });
+        }
+        return false;
+    };
+
+    const deleteData = async ({ item }) => {
         const currentDate = new Date().toLocaleString();
         const userRef = db.collection('users').doc(userDbDoc);
 
         const dataToSave = formatDataToSave('delete');
+
+        const dateReadyForUpdate = deleteFromData({ item, dataToSave });
+
+        if (!dateReadyForUpdate) {
+            return;
+        }
+        dataToSave.data = dateReadyForUpdate;
+
         try {
             db.runTransaction(async (transaction) => {
                 const doc = await transaction.get(userRef);
@@ -105,9 +125,7 @@ const Home = () => {
                 // update the users array after getting it from Firestore.
                 const newUserDataArray = doc.data();
                 const newVersion = {
-                    version: dataToSave.version
-                        ? dataToSave.version + 1
-                        : 1,
+                    version: dataToSave.version ? dataToSave.version + 1 : 1,
                     date: currentDate,
                     data: dataToSave.data ? dataToSave.data : dataToSave,
                 };
@@ -115,13 +133,12 @@ const Home = () => {
                     newUserDataArray.data.shift();
                 }
                 newUserDataArray.data.push(newVersion);
-
                 transaction.update(userRef, { ...newUserDataArray });
             });
+            // .then(window.location.reload());
         } catch (e) {
             console.log('Transaction failed: ', e);
         }
-
     };
 
     const saveData = async () => {
@@ -164,7 +181,6 @@ const Home = () => {
     };
 
     const handleSaveClick = () => {
-        console.log(selectedOriginalRightLinkData, data);
         if (_.isEqual(selectedOriginalRightLinkData, data)) {
             alert('No changes detected, everything is up to date!');
         } else if (doesTitleExist()) {
